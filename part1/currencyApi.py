@@ -1,6 +1,14 @@
+# Module need for to request currency data.
 import requests
 
-data = requests.get(https://apilayer.net/api/convert?access_key=YOUR-PERSONAL-API-KEY&from=GBP&to=USD&amount=1, params={key: value}, args)
+# Hidden Api key. Key is hidden for security
+Api_key_file = open("./Apikey.txt", "r")
+Api_key = Api_key_file.read()
+
+# Get request for currency data. Request will return a JSON.
+data = requests.get('http://api.currencylayer.com/live?access_key='+Api_key+'&currencies=GBP,MGA&format=1')
+
+print(data.json())
 
 
 
@@ -30,14 +38,5 @@ data = requests.get(https://apilayer.net/api/convert?access_key=YOUR-PERSONAL-AP
 
 
 
-
-
-
-http://api.currencylayer.com/live
-
-    ? access_key = YOUR_ACCESS_KEY
-    & source = GBP
-    & currencies = USD,AUD,CAD,PLN,MXN
-    & format = 1
 
 
