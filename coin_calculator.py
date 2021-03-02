@@ -38,10 +38,10 @@ def coin_exchange(pennies, denomination):
 # prompted for a coin-denomination. coin_exchange then calculates the amount of coins
 # of that denomination the user can recieve, along with the amount of pennies
 # they will have left over. This information is then printed in a human-readable format.
-def main():
-    pennies = get_penny_amount()
+def main(config):
+    pennies = get_penny_amount(config)
     while pennies < 0:
-        pennies = get_penny_amount()
+        pennies = get_penny_amount(config)
     denomination = get_denomination()
     while denomination == "incorrect_usage":
         denomination = get_denomination()

@@ -1,7 +1,7 @@
 # general_functions contains functions that are used throughout multiple
 # parts of the program. The other headers contain the content for the respective
 # options in the main menu
-from general_functions import spacer, option_chooser
+from general_functions import spacer, option_chooser, CONFIG
 import coin_calculator
 import multiple_coin_calculator
 import set_details
@@ -13,7 +13,6 @@ MENU_OPTIONS = 6
 
 # Function to print the main menu 
 def menu():
-    spacer()
     print("***Coin Sorter - Main Menu***")
     print("1 - Coin calculator")
     print("2 - Multiple coin calculator")
@@ -33,25 +32,28 @@ def menu():
 # 6, the program exits and thanks the user. Note that option_chooser will re-prompt the user
 # for a valid number if they don't enter an integer from 1 to 6. 
 def main():
+    config = CONFIG
+    spacer()
     menu()
     choice = option_chooser(MENU_OPTIONS)
     while choice != MENU_OPTIONS:
         if choice == 1:
             spacer()
-            coin_calculator.main()
+            coin_calculator.main(config)
         if choice == 2:
             spacer()
-            multiple_coin_calculator.main()
+            multiple_coin_calculator.main(config)
         if choice == 3:
             spacer()
             print("The following coins are currently in circulation:")
             print("£2, £1, 50p, 20p, 10p.")
         if choice == 4:
-            spacer()
-            set_details.main()
+            config = set_details.main(config)
         if choice == 5:
             spacer()
-            print("The currency is currently set to pounds sterling.")   
+            print(f"Currency: {config['currency']}")
+            print(f"Minimum amount of pennies: {config['min_coin_value']}")
+            print(f"Maximum amount of pennies: {config['max_coin_value']}")   
         print()
         input("Press enter to return to the main menu.")
         menu()

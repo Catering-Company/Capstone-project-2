@@ -1,4 +1,7 @@
-# Global variables
+# --------------------------------------------------
+# Global variables:
+#
+#
 uk_coins = ["£2", "£1", "50p", "20p", "10p"]
 uk_coins_dict = {
         "£2": 200,
@@ -15,8 +18,20 @@ us_coins_dict = {
         "20c": 20,
         "10c": 10,
     }
-    
 
+
+CONFIG = {
+    "currency": "POUNDS STERLING",
+    "min_coin_value": 0,
+    "max_coin_value": 10000,
+}
+#---------------------------------------------------
+
+
+#---------------------------------------------------
+# Functions: 
+#
+#
 # Allows the user to choose what option they want from the menu. The parameter is an integer
 # that needs to equal the length of the menu. 
 def option_chooser(choices):
@@ -47,17 +62,25 @@ def floor_calc(x, y):
 
 # Gets the user to input the amount of pennies that they want to exchange. Ensures the user
 # inputes a positive integer.
-def get_penny_amount():
+def get_penny_amount(config):
     try:
         pennies = input("How many pennies do you have? Please enter a postiive number: ")
         pennies = int(pennies)
+        if int(pennies) < config["min_coin_value"]:
+            print(f"The minimum coin value is set to {config['min_coin_value']}.")
+            return -1
+        if int(pennies) > config["max_coin_value"]:
+            print(f"The maximum coin value is set to {config['max_coin_value']}.")
+            return -2
         if int(pennies) <= 0:
             print("This is not a valid amount of pennies.")
-            return -1
+            return -3
         if int(pennies) == 0:
             print("You need to have some pennies in order to exchange them!")
-            return -2
+            return -4
     except:
         print("This is not a valid amount of pennies.")
-        return -3
+        return -5
     return int(pennies)
+
+#---------------------------------------------------------

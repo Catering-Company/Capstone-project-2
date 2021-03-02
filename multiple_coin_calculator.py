@@ -58,10 +58,10 @@ def result_print(uk_coins, uk_coins_amounts):
 # for the denomination they wish to exclude. A list, uk_coins_amounts, is then created.
 # This lists holds all the information about how many of each coin the user will recieve.
 # result_print then translates this information into a human-readable format. 
-def main():
-    pennies = get_penny_amount()
+def main(config):
+    pennies = get_penny_amount(config)
     while pennies < 0:
-        pennies = get_penny_amount()
+        pennies = get_penny_amount(config)
     excluded_denomination = exclude_denomination()
     while excluded_denomination == "incorrect_usage":
         excluded_denomination = exclude_denomination()
