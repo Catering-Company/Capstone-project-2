@@ -2,6 +2,7 @@
 # Global variables:
 #
 #
+# A useful list and dictionary for both US and UK currency
 uk_coins = ["£2", "£1", "50p", "20p", "10p"]
 uk_coins_dict = {
         "£2": 200,
@@ -18,6 +19,7 @@ us_coins_dict = {
         "20c": 20,
         "10c": 10,
     }
+
 
 # CONFIG is a constant list of the initial configurations of the program. In the main() section of
 # main_menu.py, the list-variable config is set to equal CONFIG. config can be changed
@@ -39,9 +41,9 @@ CONFIG = {
 # Functions: 
 #
 #
-# Allows the user to choose what option they want from a menu. The parameter is an integer
-# that needs to equal the length of the menu. In 'main_menu.py' choices takes the value of 6, 
-# whereas in 'set_details.py' choices takes the value of 4. If the user enters anything
+# Allows the user to choose what option they want from a menu. The parameter 'choices' is an
+# integer that needs to equal the length of the menu. In 'main_menu.py' choices takes the value 
+# of 6, whereas in 'set_details.py' choices takes the value of 4. If the user enters anything
 # that isn't an integer from 1 through to choices then option_chooser returns a negative value
 # so that the user can be re-prompted via a while-loop.
 def option_chooser(choices):
@@ -95,5 +97,28 @@ def get_penny_amount(config):
         print("This is not a valid amount of pennies.")
         return -5
     return int(pennies)
+
+
+
+def get_cent_amount(config):
+    try:
+        cents = input("How many cents do you have? Please enter a postiive number: ")
+        cents = int(cents)
+        if int(cents) < config["min_coin_value"]:
+            print(f"The minimum coin value is set to {config['min_coin_value']}.")
+            return -1
+        if int(cents) > config["max_coin_value"]:
+            print(f"The maximum coin value is set to {config['max_coin_value']}.")
+            return -2
+        if int(cents) <= 0:
+            print("This is not a valid amount of cents.")
+            return -3
+        if int(cents) == 0:
+            print("You need to have some cents in order to exchange them!")
+            return -4
+    except:
+        print("This is not a valid amount of cents.")
+        return -5
+    return int(cents)
 
 #---------------------------------------------------------

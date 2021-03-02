@@ -24,7 +24,7 @@ def sub_menu():
 # what_currency returns "incorrect-usage". A while-loop in main(config) will then 
 # re-prompt the user until they enter either 'us dollars' or 'pounds sterling'.
 def what_currency():
-    currency = input("What is your preffered currency? Pounds Sterling or US dollars? ")
+    currency = input("What is your preffered currency? Pounds Sterling or US Dollars? ")
     if currency.strip().lower() in {"pounds sterling", "us dollars"}:
         return currency.lower()
     else:
@@ -47,29 +47,30 @@ def what_currency():
 def main(config):
     spacer()
     sub_menu()
-    choice = option_chooser(SUB_MENU_OPTIONS)
-    while choice not in range(1, SUB_MENU_OPTIONS + 1):
-        choice = option_chooser(SUB_MENU_OPTIONS)
-    while choice != SUB_MENU_OPTIONS:
-        if choice == 1:
+    sub_choice = option_chooser(SUB_MENU_OPTIONS)
+    while sub_choice not in range(1, SUB_MENU_OPTIONS + 1):
+        sub_choice = option_chooser(SUB_MENU_OPTIONS)
+    while sub_choice != SUB_MENU_OPTIONS:
+        if sub_choice == 1:
+            spacer()
             currency = what_currency()
             while currency == "incorrect-usage":
-                currency == what_currency
+                print("Please enter either Pounds Sterling or US Dollars.")
+                currency = what_currency()
             config["currency"] = currency.upper()     
-        if choice == 2:
+        if sub_choice == 2:
             spacer()
             min_coin_value = 0
             min_coin_value = sub_set_min_coin_value.main()
             config["min_coin_value"] = min_coin_value
-        if choice ==3:
+        if sub_choice ==3:
             spacer()
             max_coin_value = 10000
             max_coin_value = sub_set_max_coin_value.main()
             config["max_coin_value"] = max_coin_value
-
         print()
         input("Press enter to return to the sub-menu.")
         spacer()
         sub_menu()
-        choice = option_chooser(SUB_MENU_OPTIONS)
+        sub_choice = option_chooser(SUB_MENU_OPTIONS)
     return config
