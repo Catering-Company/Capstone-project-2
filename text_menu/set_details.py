@@ -1,3 +1,6 @@
+# CODE FOR SET DETAILS
+
+
 # general_functions contains functions that are used throughout multiple
 # parts of the program. Headers for the min/max functions are also included.
 from general_functions import option_chooser, spacer
