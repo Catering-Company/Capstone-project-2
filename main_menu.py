@@ -32,6 +32,7 @@ def menu():
 # 6, the program exits and thanks the user. Note that option_chooser will re-prompt the user
 # for a valid number if they don't enter an integer from 1 to 6. 
 def main():
+    #see general_functions for an explanation of config
     config = CONFIG
     spacer()
     menu()
