@@ -16,7 +16,8 @@ us_coins_dict = {
         "10c": 10,
     }
 
-# Allows the user to choose what option they want from the menu
+# Allows the user to choose what option they want from the menu. The parameter is an integer
+# that needs to equal the length of the menu. 
 def option_chooser(choices):
     choice = input("Enter your choice: ")
     try:

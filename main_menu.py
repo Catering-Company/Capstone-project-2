@@ -1,6 +1,6 @@
 # general_functions contains functions that are used throughout multiple
-# parts of the program. The other headers contain the content for each
-# of the options in the main menu
+# parts of the program. The other headers contain the content for the respective
+# options in the main menu
 from general_functions import spacer, option_chooser
 import coin_calculator
 import multiple_coin_calculator

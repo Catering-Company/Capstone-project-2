@@ -31,6 +31,7 @@ def main():
                 currency == what_currency           
         print()
         input("Press enter to return to the sub-menu.")
+        spacer()
         sub_menu()
         choice = option_chooser(SUB_MENU_OPTIONS)
-    return currency
+    
