@@ -35,8 +35,6 @@ def menu():
 def main():
     menu()
     choice = option_chooser(MENU_OPTIONS)
-    while choice not in range(1, MENU_OPTIONS + 1):
-        choice = option_chooser(MENU_OPTIONS)
     while choice != MENU_OPTIONS:
         if choice == 1:
             spacer()
