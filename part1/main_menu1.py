@@ -39,16 +39,16 @@ def main():
     while choice != MENU_OPTIONS:
         if choice == 1:
             spacer()
-            coin_calculator.main(config)
+            coin_calculator1.main(config)
         if choice == 2:
             spacer()
-            multiple_coin_calculator.main(config)
+            multiple_coin_calculator1.main(config)
         if choice == 3:
             spacer()
             print("The following coins are currently in circulation:")
             print("£2, £1, 50p, 20p, 10p.")
         if choice == 4:
-            config = set_details.main(config)
+            config = set_details1.main(config)
         if choice == 5:
             spacer()
             print(f"Currency: {config['currency']}")
