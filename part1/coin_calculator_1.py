@@ -1,6 +1,6 @@
 # general_functions contains functions that are used throughout multiple
 # parts of the program.
-from general_functions import uk_coins, uk_coins_dict, get_penny_amount, floor_calc
+from general_functions1 import uk_coins, uk_coins_dict, get_penny_amount, floor_calc
 
 
 # Gets the coin-denomination that the user wants to turn their pennies into

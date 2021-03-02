@@ -1,10 +1,10 @@
 # general_functions contains functions that are used throughout multiple
 # parts of the program. The other headers contain the content for the respective
 # options in the main menu
-from general_functions import spacer, option_chooser, CONFIG
-import coin_calculator
-import multiple_coin_calculator
-import set_details
+from general_functions1 import spacer, option_chooser, CONFIG
+import coin_calculator1
+import multiple_coin_calculator1
+import set_details1
 
 
 # The amount of options in the main menu

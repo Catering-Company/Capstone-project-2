@@ -1,8 +1,8 @@
 # general_functions contains functions that are used throughout multiple
 # parts of the program.
-from general_functions import option_chooser, spacer
-import sub_set_min_coin_value
-import sub_set_max_coin_value
+from general_functions1 import option_chooser, spacer
+import sub_set_min_coin_value1
+import sub_set_max_coin_value1
 
 SUB_MENU_OPTIONS = 4
 

@@ -1,6 +1,6 @@
 # general_functions contains functions that are used throughout multiple
 # parts of the program.
-from general_functions import get_penny_amount ,floor_calc, uk_coins, uk_coins_dict
+from general_functions1 import get_penny_amount ,floor_calc, uk_coins, uk_coins_dict
 
 
 # Gets the coin-denomination that the user wants to exclude. If an incorrect string is 
