@@ -75,6 +75,7 @@ def main():
                 print(f"Maximum amount of cents: {config['max_coin_value']}")
         print()
         input("Press enter to return to the main menu.")
+        spacer()
         menu()
         choice = option_chooser(MENU_OPTIONS)
     spacer()
