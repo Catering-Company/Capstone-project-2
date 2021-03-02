@@ -1,3 +1,6 @@
+# CODE FOR MULTIPLE COIN CALCULATOR, PROVIDED THAT THE CURRENCY IS SET TO POUNDS
+
+
 # general_functions contains functions that are used throughout multiple
 # parts of the program.
 from general_functions import get_penny_amount ,floor_calc, uk_coins, uk_coins_dict

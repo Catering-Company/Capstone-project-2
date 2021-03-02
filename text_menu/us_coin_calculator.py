@@ -1,3 +1,6 @@
+# CODE FOR COIN CALCULATOR, PROVIDED THAT THE CURRENCY IS SET TO DOLLARS
+
+
 # general_functions contains functions that are used throughout multiple
 # parts of the program.
 from general_functions import us_coins, us_coins_dict, get_cent_amount, floor_calc

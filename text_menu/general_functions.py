@@ -1,3 +1,5 @@
+# GENERAL FUNCTIONS THAT ARE USED THROUGHOUT MULTIPLE PARTS OF THE PROGRAM
+
 # --------------------------------------------------
 # Global variables:
 #

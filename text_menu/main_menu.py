@@ -1,3 +1,5 @@
+# CODE FOR THE MAIN MENU
+
 # general_functions contains functions that are used throughout multiple
 # parts of the program. The other headers contain the content for the respective
 # options in the main menu
