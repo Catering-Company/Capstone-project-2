@@ -51,8 +51,7 @@ def main():
             set_details.main()
         if choice == 5:
             spacer()
-            print("The currency is currently set to pounds sterling.")
-            
+            print("The currency is currently set to pounds sterling.")   
         print()
         input("Press enter to return to the main menu.")
         menu()
