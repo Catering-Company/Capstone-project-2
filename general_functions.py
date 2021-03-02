@@ -15,6 +15,7 @@ us_coins_dict = {
         "20c": 20,
         "10c": 10,
     }
+    
 
 # Allows the user to choose what option they want from the menu. The parameter is an integer
 # that needs to equal the length of the menu. 

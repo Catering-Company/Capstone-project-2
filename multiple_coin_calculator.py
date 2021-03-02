@@ -1,3 +1,5 @@
+# general_functions contains functions that are used throughout multiple
+# parts of the program.
 from general_functions import get_penny_amount ,floor_calc, uk_coins, uk_coins_dict
 
 
@@ -49,6 +51,7 @@ def result_print(uk_coins, uk_coins_amounts):
             print(f"and you'll have {uk_coins_amounts[-1]} pennies left over!")
         else:
             print(f"and you'll have {uk_coins_amounts[-1]} penny left over!")
+
 
 # The main function:
 # First the user is prompted for the amounts of pennies they have. They are then prompted

@@ -1,3 +1,5 @@
+# general_functions contains functions that are used throughout multiple
+# parts of the program.
 from general_functions import uk_coins, uk_coins_dict, get_penny_amount, floor_calc
 
 
@@ -29,6 +31,7 @@ def coin_exchange(pennies, denomination):
     else: 
         print(f"You can exchange your pennies for {coin_amount} {denomination} coins with {penny_remainder}p to spare.")
     return 0
+
 
 # The main function:
 # The user is prompted for the amount of pennies they have to trade. They are then

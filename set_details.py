@@ -1,7 +1,10 @@
+# general_functions contains functions that are used throughout multiple
+# parts of the program.
 from general_functions import option_chooser, spacer
 
 
 SUB_MENU_OPTIONS = 4
+
 
 def sub_menu():
 
@@ -12,12 +15,14 @@ def sub_menu():
     print("4 - Return to main menu")    
     print()
 
+
 def what_currency():
     currency = input("What is your preffered currency? Pounds sterling or US dollars? ")
     if currency.strip().lower() in {"pounds sterling", "us dollars", "dollars", "pounds"}:
         return currency.lower()
     else:
         return "incorrect-usage"
+
 
 def main():
     sub_menu()
