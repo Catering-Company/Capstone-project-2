@@ -101,7 +101,7 @@ def get_penny_amount(config):
     return int(pennies)
 
 
-
+# Same as get_penny_amount but with cents. 
 def get_cent_amount(config):
     try:
         cents = input("How many cents do you have? Please enter a postiive number: ")

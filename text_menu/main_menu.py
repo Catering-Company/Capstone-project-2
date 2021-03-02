@@ -42,6 +42,9 @@ def main():
     while choice != MENU_OPTIONS:
         if choice == 1:
             spacer()
+            # Note that config is used here to decide whether to use uk_coin_caculator or
+            # us_coin_calculator. config is also used to make analogous decisions when 
+            # choice == 2, 3 and 5. 
             if config['currency'] == "POUNDS STERLING":
                 uk_coin_calculator.main(config)
             if config['currency'] == "US DOLLARS":
@@ -72,6 +75,7 @@ def main():
                 print(f"Maximum amount of cents: {config['max_coin_value']}")
         print()
         input("Press enter to return to the main menu.")
+        spacer()
         menu()
         choice = option_chooser(MENU_OPTIONS)
     spacer()
