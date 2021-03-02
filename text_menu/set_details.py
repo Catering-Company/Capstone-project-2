@@ -62,12 +62,20 @@ def main(config):
             spacer()
             min_coin_value = 0
             min_coin_value = sub_set_min_coin_value.main()
-            config["min_coin_value"] = min_coin_value
+            if min_coin_value < config["max_coin_value"]:
+                config["min_coin_value"] = min_coin_value
+            else:
+                print("Request denied.")
+                print("That is larger than the maximum coin amount!")
         if sub_choice ==3:
             spacer()
             max_coin_value = 10000
             max_coin_value = sub_set_max_coin_value.main()
-            config["max_coin_value"] = max_coin_value
+            if max_coin_value > config["min_coin_value"]:  
+                config["max_coin_value"] = max_coin_value
+            else:
+                print("Request denied.")
+                print("That is smaller than the minimum coin amount!")
         print()
         input("Press enter to return to the sub-menu.")
         spacer()

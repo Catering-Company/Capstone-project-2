@@ -26,9 +26,11 @@ us_coins_dict = {
 # in the 'Set Details' section.  The values of config can be printed in the 'Display Program
 # Configurations' section. config is used in the 'Coin Calculator' and the 'Multiple Coin
 # Calculator' sections in order to ensure that the user enters an amount of pennies that falls 
-# within the correct range. I.e if config["min_coin_value"] = 100 and
+# within the correct range. I.e if config["min_coin_value"] = 100 and 
 # config["max_coin_value"] = 500 then the user will be reprompted if they don't enter an integer
-# between 100 and 500. 
+# between 100 and 500.
+# config also determines whether 'Coin Calculator' and 'Multiple Coin Calculator' run in pounds or
+# dollars, based on what config["currency"] is set to.  
 CONFIG = {
     "currency": "POUNDS STERLING",
     "min_coin_value": 0,
