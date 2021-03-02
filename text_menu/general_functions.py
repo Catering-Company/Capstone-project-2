@@ -79,7 +79,7 @@ def floor_calc(x, y):
 # 'min_coin_value' and 'max_coin_value'.
 def get_penny_amount(config):
     try:
-        pennies = input("How many pennies do you have? Please enter a postiive number: ")
+        pennies = input("How many pennies do you have? Please enter a positive number: ")
         pennies = int(pennies)
         if int(pennies) < config["min_coin_value"]:
             print(f"The minimum coin value is set to {config['min_coin_value']}.")
