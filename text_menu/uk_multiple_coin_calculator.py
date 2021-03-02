@@ -4,7 +4,8 @@ from general_functions import get_penny_amount ,floor_calc, uk_coins, uk_coins_d
 
 
 # Gets the coin-denomination that the user wants to exclude. If an incorrect string is 
-# entered then the user gets re-prompted for a correct string. 
+# entered then exclude_denomination returns 'incorrect_usage' so that the user can be
+# re-prompted via a while-loop in main(config). 
 def exclude_denomination():
     denomination = input("What denomination do you wish to exclude? £2, £1, 50p, 20p or 10p? ")
     if denomination in uk_coins:
@@ -54,7 +55,7 @@ def result_print(uk_coins, uk_coins_amounts):
 
 
 # The main function:
-# First the user is prompted for the amounts of pennies they have. They are then prompted
+# First the user is prompted for the amount of pennies they have. They are then prompted
 # for the denomination they wish to exclude. A list, uk_coins_amounts, is then created.
 # This lists holds all the information about how many of each coin the user will recieve.
 # result_print then translates this information into a human-readable format. 

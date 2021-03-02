@@ -3,7 +3,9 @@
 from general_functions import uk_coins, uk_coins_dict, get_penny_amount, floor_calc
 
 
-# Gets the coin-denomination that the user wants to turn their pennies into
+# Gets the coin-denomination that the user wants to turn their pennies into. If the user
+# enters anything other than a valid coin-denomination then get_denomination returns 
+# 'incorrect_usage' so that the user can be re-prompted via a while-loop in main(config).
 def get_denomination():
     denomination = input("What denomination? £2, £1, 50p, 20p or 10p? ")
     if denomination in uk_coins:
