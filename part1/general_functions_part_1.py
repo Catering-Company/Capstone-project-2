@@ -4,7 +4,7 @@
 # Global variables:
 #
 #
-# A useful list and dictionary for both US and UK currency
+# A useful list and dictionary for UK currency
 uk_coins = ["£2", "£1", "50p", "20p", "10p"]
 uk_coins_dict = {
         "£2": 200,
