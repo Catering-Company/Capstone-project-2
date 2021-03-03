@@ -1,4 +1,4 @@
-A diagram of what pages import what pages:
+=====A diagram of what pages import what pages=====
 
                                                     main_menu.py
                                                         |
@@ -28,3 +28,43 @@ uk_coin_calculater.py   uk_multiple_coin_calculator.py  |                 set_de
 
 
 This diagram shows, for example, that uk_multiple_coin_calculator.py imports general_functions.py and is imported by main_menu.py.
+
+====================================================
+
+
+=====A user-orientated overview of how the program works======
+
+In order to run the program, you need to run main_menu.py.
+(I.e you need to type 'python text_menu/main_menu.py' into the console, provided your terminal is currently
+in the folder 'Capstone-project-2')
+
+Once the program has started, you will be presented with the main menu, which contains 6 options. Entering the
+integer corresponding with each option into the console will take you to the respective part of the program. 
+
+The 'Set details' section contains a sub menu that works similarly to the main menu. In this section, you can
+change the currency between US Dollars and Pounds Sterling. You can also change the minimum and maximum amount
+of coins that the program will accept from the user. Note that initially the program is set to Pounds Sterling,
+with the minimum amount of coins equal to 0 and the maximum equal to 10000. The minmum is capped at 10000. You
+cannot set the minimum to be higher than the current maximum or the maximum to be higher than the current
+minimum (because there is no reason to do so!). 
+
+When using 'Coin calculator' and 'Multiple coin calculator' the current settings will be taken into account. 
+E.g. if you have set the currency to US Dollars, then you will presented with a calculator working in US Dollars;
+if you have set the minimum amount of coins to equal 500, then you can only work with 500 or more pennies/cents.
+
+The 'Display program configurations' section allows you to see what the current settings are. If you have not
+changed any settings, then the initial settings will be displayed.
+
+The 'Print coin list' section shows you what coins are currently in circulation within the program. If the
+currency is set to Pounds Sterling, you will be shown UK coin denominations. If the currency is set to 
+US Dollars, you will be shown US coin denominations. Note that apart from changing the currency, the coins
+in circulation within the program cannot be changed. E.g there is no way of adding a 2p coin into 
+circulation.  
+
+======================================================
+
+=====A programmer-orientated overview of how the program works=====
+
+TO BE ADDED
+
+===================================================================
