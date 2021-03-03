@@ -4,25 +4,25 @@
                                                         |
                                                         |
                                                         |
-        ------------------------------------------------------------------------------------------------------------------------------------------------
-        |                         |                     |                       |                                          |                            |
-        |                         |                     |                       |                                          |                            |
-        |                         |                     |                       |                                          |                            |
-        |                         |                     |                       |                                          |                            |
-uk_coin_calculater.py   uk_multiple_coin_calculator.py  |                 set_details.py                          us_coin_calculator.py     us_multiple_coin_calculator.py
-        |                         |                     |                       |                                          |                            |
-        |                         |                     |                       |                                          |                            |
-        |                         |                     |                       |                                          |                            |
-        |                         |                     |                       |                                          |                            |
-        -------------------------------------------------           -------------------------------------------------      |                            |
-                                                        |           |                               |               |      |                            |
-                                                        |           |                               |               |      |                            |
-                                                        |           |                               |               |      |                            |
-                                                        |           |                               |               |      |                            |
-                                                        |    sub_set_max_coin_value.py  sub_set_min_coin_value.py   |      |                            |
-                                                        |                                                           |      |                            |
-                                                        |                                                           |      |                            |
-                                                        |------------------------------------------------------------------------------------------------
+        -----------------------------------------------------------------------------------------------------------------------------------------
+        |                         |                     |                       |                                      |                        |
+        |                         |                     |                       |                                      |                        |
+        |                         |                     |                       |                                      |                        |
+        |                         |                     |                       |                                      |                        |
+uk_coin_calculater.py   uk_multiple_coin_calculator.py  |                 set_details.py                      us_coin_calculator.py  us_multiple_coin_calculator.py
+        |                         |                     |                       |                                      |                        |
+        |                         |                     |                       |                                      |                        |
+        |                         |                     |                       |                                      |                        |
+        |                         |                     |                       |                                      |                        |
+        -------------------------------------------------           -------------------------------------------------  |                        |
+                                                        |           |                               |               |  |                        |
+                                                        |           |                               |               |  |                        |
+                                                        |           |                               |               |  |                        |
+                                                        |           |                               |               |  |                        |
+                                                        |    sub_set_max_coin_value.py  sub_set_min_coin_value.py   |  |                        |
+                                                        |                                                           |  |                        |
+                                                        |                                                           |  |                        |
+                                                        |----------------------------------------------------------------------------------------
                                                         |
                                             general_functions.py    
 
@@ -65,6 +65,40 @@ circulation.
 
 =====A programmer-orientated overview of how the program works=====
 
-TO BE ADDED
+Note that the purpose of this section is to explain the relationships between all of the pages comprising the 
+program, not to explain the purposes of the individual pages themselves. The latter is done in the comments of
+the individual pages.
+
+On running main_menu.py, the variable list 'config' is set to equal the constant list 'CONFIG',
+the main menu is printed and the function 'option_chooser' allows the user to choose between 6 options. Choosing
+options 1 or 2 at this stage will take the user to uk_coin_calculater or uk_multiple_coin_calculator 
+respectively, and the minimum and maximum coin value will equal 0 and 10000 respectively.
+
+These choices of min/max coin value, along with whether the uk or us calculators are used, are controlled by 'config'. 
+The reason why the program initially works with min = 0 , max = 10000 and UK currency is because initially
+config = CONFIG, where
+CONFIG = {
+    "currency": "POUNDS STERLING",
+    "min_coin_value": 0,
+    "max_coin_value": 10000,
+}.
+These values of config are changed using set_details.py, which the user accesses via choice 4 of the main menu, 'Set
+details'. To see how set_details.py changes config read the comments in set_details.py.
+
+Changing config will change how options 1 and 2 of the main menu work. For example, if 
+config = {
+    "currency": "US DOLLARS",
+    "min_coin_value": 567,
+    "max_coin_value": 9741,   
+}
+then options 1 and 2 will take the user to us_coin_calculator and us_multiple_coin_calculator respectively, and the 
+minimum and maximum coin value will equal 567 and 9741 respectively. 
+
+The result of choices 3 and 5 from main_menu.py (corresponding to 'Print coin list' and 'Display program configurations')
+also depend on what config is set to. E.g 'Print coin list' shows UK coins if config["currency"] = "Pounds Sterling", but shows
+US coins if config["currency"] = "US DOLLARS". 
+
+Choosing option 6 of the main menu ends the program as it ends the while-loop in main_menu.py. Once the while-loop has ended,
+the program prints "Thank you for using!" and the user is returned to the console. 
 
 ===================================================================
