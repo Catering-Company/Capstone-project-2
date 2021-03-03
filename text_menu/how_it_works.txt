@@ -95,7 +95,7 @@ then options 1 and 2 will take the user to us_coin_calculator and us_multiple_co
 minimum and maximum coin value will equal 567 and 9741 respectively. 
 
 The result of choices 3 and 5 from main_menu.py (corresponding to 'Print coin list' and 'Display program configurations')
-also depend on what config is set to. E.g choice 3 prints UK coins if config["currency"] = "Pounds Sterling", but prints
+also depend on what config is set to. E.g 'Print coin list' shows UK coins if config["currency"] = "Pounds Sterling", but shows
 US coins if config["currency"] = "US DOLLARS". 
 
 Choosing option 6 of the main menu end the program as it ends the while-loop in main_menu.py. Once the while-loop has ended,
