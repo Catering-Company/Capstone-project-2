@@ -98,7 +98,7 @@ The result of choices 3 and 5 from main_menu.py (corresponding to 'Print coin li
 also depend on what config is set to. E.g 'Print coin list' shows UK coins if config["currency"] = "Pounds Sterling", but shows
 US coins if config["currency"] = "US DOLLARS". 
 
-Choosing option 6 of the main menu end the program as it ends the while-loop in main_menu.py. Once the while-loop has ended,
+Choosing option 6 of the main menu ends the program as it ends the while-loop in main_menu.py. Once the while-loop has ended,
 the program prints "Thank you for using!" and the user is returned to the console. 
 
 ===================================================================
