@@ -1,0 +1,30 @@
+A diagram of what pages import what pages:
+
+                                                    main_menu.py
+                                                        |
+                                                        |
+                                                        |
+        ------------------------------------------------------------------------------------------------------------------------------------------------
+        |                         |                     |                       |                                          |                            |
+        |                         |                     |                       |                                          |                            |
+        |                         |                     |                       |                                          |                            |
+        |                         |                     |                       |                                          |                            |
+uk_coin_calculater.py   uk_multiple_coin_calculator.py  |                 set_details.py                          us_coin_calculator.py     us_multiple_coin_calculator.py
+        |                         |                     |                       |                                          |                            |
+        |                         |                     |                       |                                          |                            |
+        |                         |                     |                       |                                          |                            |
+        |                         |                     |                       |                                          |                            |
+        -------------------------------------------------           -------------------------------------------------      |                            |
+                                                        |           |                               |               |      |                            |
+                                                        |           |                               |               |      |                            |
+                                                        |           |                               |               |      |                            |
+                                                        |           |                               |               |      |                            |
+                                                        |    sub_set_max_coin_value.py  sub_set_min_coin_value.py   |      |                            |
+                                                        |                                                           |      |                            |
+                                                        |                                                           |      |                            |
+                                                        |------------------------------------------------------------------------------------------------
+                                                        |
+                                            general_functions.py    
+
+
+This diagram shows, for example, that uk_multiple_coin_calculator.py imports general_functions.py and is imported by main_menu.py.
