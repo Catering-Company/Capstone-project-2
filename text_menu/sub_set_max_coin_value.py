@@ -1,5 +1,6 @@
 # CODE FOR SETTING THE MAXIMUM COIN INPUT VALUE ( CHOICE 3 OF THE SUB-MENU )
 
+
 # Gets the user to input a new maximum amount of coins that the user can enter 
 # into the Coin Calulator and Mutiple Coin Calculator. There are restrictions
 # in place to prevent the user from entering:
