@@ -65,7 +65,7 @@ def main(config):
             spacer()
             min_coin_value = sub_set_min_coin_value.main(config)
             config["min_coin_value"] = min_coin_value
-        if sub_choice ==3:
+        if sub_choice == 3:
             spacer()
             max_coin_value = sub_set_max_coin_value.main(config)
             config["max_coin_value"] = max_coin_value

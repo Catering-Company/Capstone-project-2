@@ -7,6 +7,8 @@
 # - A max value less than 0.
 # - A max value greater than 10000.
 # - A max value less than the current min value. 
+#  If any of the above happens then min_coin_value returns a negative integer. A
+#  while-loop in main(config) will then rerun min_coin_value.
 def max_coin_value(config):
     try:
         max_coin = input("What is the maximum amount of coins you want the machine to accept? ")
