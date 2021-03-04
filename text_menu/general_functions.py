@@ -77,7 +77,7 @@ def floor_calc(x, y):
 
 
 # Gets the user to input the amount of pennies that they want to exchange. Ensures the user
-# inputes a positive integer. get_penny_amount takes the parameter config. This parameter
+# inputs a positive integer. get_penny_amount takes the parameter config. This parameter
 # is a list that has a 'min_coin_value' and a 'max_coin_value' as keys. get_penny_amount
 # will ensure that the amount of pennies the user chooses is between these values of 
 # 'min_coin_value' and 'max_coin_value'.

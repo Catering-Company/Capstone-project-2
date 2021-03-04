@@ -41,7 +41,7 @@ def coin_exchange(cents, denomination):
 # The main function:
 # The user is prompted for the amount of cents they have to trade. They are then
 # prompted for a coin-denomination. coin_exchange then calculates the amount of coins
-# of that denomination the user can recieve, along with the amount of cents
+# of that denomination the user can receive, along with the amount of cents
 # they will have left over. This information is then printed in a human-readable format.
 def main(config):
     cents = get_cent_amount(config)

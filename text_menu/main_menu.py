@@ -29,7 +29,7 @@ def menu():
 
 # The main section:
 # The main menu is printed. Using option_chooser, the user is prompted
-# to choose a number between 1 and 6, correllating to the 6 choices they have been provided
+# to choose a number between 1 and 6, correlating to the 6 choices they have been provided
 # with. If the user chooses 1 through 5, they are taken to the chosen part of the 
 # program. Once they are finished, they are taken back to the main menu and asked to choose
 # a number between 1 and 6 once again.  If they choose 1 through 5, repeat. If they choose
@@ -44,7 +44,7 @@ def main():
     while choice != MENU_OPTIONS:
         if choice == 1:
             spacer()
-            # Note that config is used here to decide whether to use uk_coin_caculator or
+            # Note that config is used here to decide whether to use uk_coin_calculator or
             # us_coin_calculator. config is also used to make analogous decisions when 
             # choice == 2, 3 and 5. 
             if config['currency'] == "POUNDS STERLING":

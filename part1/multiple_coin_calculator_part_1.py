@@ -60,7 +60,7 @@ def result_print(uk_coins, uk_coins_amounts):
 # The main function:
 # First the user is prompted for the amount of pennies they have. They are then prompted
 # for the denomination they wish to exclude. A list, uk_coins_amounts, is then created.
-# This lists holds all the information about how many of each coin the user will recieve.
+# This lists holds all the information about how many of each coin the user will receive.
 # result_print then translates this information into a human-readable format. 
 def main():
     pennies = get_penny_amount()

@@ -18,7 +18,7 @@ def exclude_denomination():
         return "incorrect_usage"
 
 
-# Calculates the amount of each coin the user can recieve for their pennies, prioritising
+# Calculates the amount of each coin the user can receive for their pennies, prioritising
 # the higher denominations. The results are returned in a list, uk_coins_amounts. Each 
 # entry in the list corresponds to the coin in the same entry of the list uk_coins. E.g
 # uk_coins_amounts[1] corresponds to uk_coins[1], which is £1. uk_coins_amounts is one 
@@ -60,7 +60,7 @@ def result_print(uk_coins, uk_coins_amounts):
 # The main function:
 # First the user is prompted for the amount of pennies they have. They are then prompted
 # for the denomination they wish to exclude. A list, uk_coins_amounts, is then created.
-# This lists holds all the information about how many of each coin the user will recieve.
+# This lists holds all the information about how many of each coin the user will receive.
 # result_print then translates this information into a human-readable format. 
 def main(config):
     pennies = get_penny_amount(config)

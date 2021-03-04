@@ -18,7 +18,7 @@ def get_denomination():
 
 
 # Given an amount of pennies and a coin-denomination, coin_exchange prints 
-# the number of said coins you can recieve in exchange for your pennies, along
+# the number of said coins you can receive in exchange for your pennies, along
 # with the amount of pennies you will have left. 
 def coin_exchange(pennies, denomination):
     coin_amount = floor_calc(pennies, uk_coins_dict[f"{denomination}"])
@@ -40,7 +40,7 @@ def coin_exchange(pennies, denomination):
 # The main function:
 # The user is prompted for the amount of pennies they have to trade. They are then
 # prompted for a coin-denomination. coin_exchange then calculates the amount of coins
-# of that denomination the user can recieve, along with the amount of pennies
+# of that denomination the user can receive, along with the amount of pennies
 # they will have left over. This information is then printed in a human-readable format.
 def main():
     pennies = get_penny_amount()

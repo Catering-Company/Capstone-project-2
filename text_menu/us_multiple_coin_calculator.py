@@ -25,7 +25,7 @@ def exclude_denomination():
 # element longer than us_coins, however. The extra (final) element corresponds to the
 # amount of cents that are left over.
 # The input excluded_denomination takes the denomination that
-# needs to be exluded. E.g calculate(1234, $2) would exclude $2 and us_coins_amounts would
+# needs to be excluded. E.g calculate(1234, $2) would exclude $2 and us_coins_amounts would
 # read [0, 12, 0, 1, 1, 4]. 12 $1 coins, 1 20c, 1 10c and 4 cents left over. 
 def calculate(cents, excluded_denomination):
     us_coins_amounts = []
@@ -60,7 +60,7 @@ def result_print(us_coins, us_coins_amounts):
 # The main function:
 # First the user is prompted for the amount of cents they have. They are then prompted
 # for the denomination they wish to exclude. A list, us_coins_amounts, is then created.
-# This lists holds all the information about how many of each coin the user will recieve.
+# This lists holds all the information about how many of each coin the user will receive.
 # result_print then translates this information into a human-readable format. 
 def main(config):
     cents = get_cent_amount(config)

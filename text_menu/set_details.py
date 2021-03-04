@@ -22,7 +22,7 @@ def sub_menu():
     print()
 
 
-# Asks the user what their preffered currency is by requesting them to enter either 
+# Asks the user what their preferred currency is by requesting them to enter either 
 # 'us dollars' or 'pounds sterling'. If the user enters anything else then 
 # what_currency returns "incorrect-usage". A while-loop in main(config) will then 
 # re-prompt the user until they enter either 'us dollars' or 'pounds sterling'.
