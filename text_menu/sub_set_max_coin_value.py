@@ -9,6 +9,8 @@ def max_coin_value():
         if int(max_coin) < 0:
             print("The maximum must be at least 1.")
             return -1
+        if int(max_coin) > 10000:
+            print("The maximum cannot exceed 10000.")
     except:
         print("Please enter a maximum amount of coins.")
         return -3
