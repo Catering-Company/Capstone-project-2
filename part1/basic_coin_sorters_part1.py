@@ -1,5 +1,6 @@
 # very basic coin sorter for part 1
-    
+# import currency exchange function containing rates
+from currencyApi import Get_Currency_Rates    
 
 # CONFIG is a constant list of the initial configurations of the program. In this program it cannot be changed
  
@@ -72,17 +73,30 @@ def floor_calc(x, y):
 def coin_exchange(pennies, denomination):
     coin_amount = floor_calc(pennies, uk_coins_dict[f"{denomination}"])
     penny_remainder = pennies % uk_coins_dict[f"{denomination}"]
+    # Variables containing currency conversions
+    GBPUSD = Get_Currency_Rates()['GBP_USD']
+    GBPMGA = Get_Currency_Rates()['GBP_MGA']
+    pennies_converted_to_USD = round((pennies/100) * GBPUSD, 2)
+    pennies_converted_to_MGA = round((pennies/100) * GBPMGA, 2)
     if penny_remainder == 0:
         if coin_amount == 1:
-            print(f"You can exchange your pennies for exactly {coin_amount} {denomination} coin.")       
+            print(f"You can exchange your pennies for exactly {coin_amount} {denomination} coin.")
+            print(f"In US Dollars that is {pennies_converted_to_USD}.")
+            print(f"In Malagasy Ariary that is {pennies_converted_to_MGA}.")
         if coin_amount > 1:
-            print(f"You can exchange your pennies for exactly {coin_amount} {denomination} coins.")           
+            print(f"You can exchange your pennies for exactly {coin_amount} {denomination} coins.")
+            print(f"In US Dollars that is {pennies_converted_to_USD}.")
+            print(f"In Malagasy Ariary that is {pennies_converted_to_MGA}.")           
     elif coin_amount == 0:
         print("You don't have enough pennies to exchange!")
     elif coin_amount == 1:
         print(f"You can exchange your pennies for {coin_amount} {denomination} coin with {penny_remainder}p to spare.")
+        print(f"In US Dollars that is {pennies_converted_to_USD}.")
+        print(f"In Malagasy Ariary that is {pennies_converted_to_MGA}.")
     else: 
         print(f"You can exchange your pennies for {coin_amount} {denomination} coins with {penny_remainder}p to spare.")
+        print(f"In US Dollars that is {pennies_converted_to_USD}.")
+        print(f"In Malagasy Ariary that is {pennies_converted_to_MGA}.")
     return 0
 
 
@@ -156,9 +170,8 @@ def main():
             while denomination == "incorrect_usage":
                 denomination = get_denomination()
             coin_exchange(pennies, denomination)
-            #put in currency conversion here?
 
-            #sinplest way to repeat program
+            #simplest way to repeat program
             repeat1 = input("Would you like to sort more pennies? Press n for no, or any key for yes.")
             
             if repeat1 == 'n':
