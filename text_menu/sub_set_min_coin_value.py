@@ -21,7 +21,7 @@ def min_coin_value(config):
             print("Request denied.")
             print("That is larger than the maximum coin amount!")
             print()
-            return-3           
+            return -3           
     except:
         print("Please enter a minimum amount of coins.")
         print()
