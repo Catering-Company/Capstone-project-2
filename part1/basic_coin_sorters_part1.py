@@ -37,7 +37,7 @@ def get_penny_amount():
     try:
         pennies = input("How many pennies do you have? Please enter a positive number: ")
         pennies = int(pennies)
-        if int(pennies) <= 0:
+        if int(pennies) < 0:
             print("This is not a valid amount of pennies.")
             return -3
         if int(pennies) == 0:
