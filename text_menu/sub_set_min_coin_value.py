@@ -2,7 +2,12 @@
 
 
 # Gets the user to input a new minimum amount of coins that the user can enter 
-# into the Coin Calulator and Mutiple Coin Calculator
+# into the Coin Calulator and Mutiple Coin Calculator. There are restrictions
+# in place to prevent the user from entering:
+# - Any non-integer.
+# - A min value less than 0.
+# - A min value greater than or equal to 10000.
+# - A min value greater than the current max value. 
 def min_coin_value(config):
     try:
         min_coin = input("What is the minimum amount of coins you want the machine to accept? ")

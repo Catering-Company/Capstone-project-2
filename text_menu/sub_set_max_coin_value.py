@@ -1,7 +1,12 @@
 # CODE FOR SETTING THE MAXIMUM COIN INPUT VALUE ( CHOICE 3 OF THE SUB-MENU )
 
 # Gets the user to input a new maximum amount of coins that the user can enter 
-# into the Coin Calulator and Mutiple Coin Calculator
+# into the Coin Calulator and Mutiple Coin Calculator. There are restrictions
+# in place to prevent the user from entering:
+# - Any non-integer.
+# - A max value less than 0.
+# - A max value greater than 10000.
+# - A max value less than the current min value. 
 def max_coin_value(config):
     try:
         max_coin = input("What is the maximum amount of coins you want the machine to accept? ")

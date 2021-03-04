@@ -27,7 +27,7 @@ def sub_menu():
 # what_currency returns "incorrect-usage". A while-loop in main(config) will then 
 # re-prompt the user until they enter either 'us dollars' or 'pounds sterling'.
 def what_currency():
-    currency = input("What is your preffered currency? Pounds Sterling or US Dollars? ")
+    currency = input("What is your preferred currency? Pounds Sterling or US Dollars? ")
     if currency.strip().lower() in {"pounds sterling", "us dollars"}:
         return currency.lower()
     else:
@@ -63,12 +63,10 @@ def main(config):
             config["currency"] = currency.upper()     
         if sub_choice == 2:
             spacer()
-            min_coin_value = 0
             min_coin_value = sub_set_min_coin_value.main(config)
             config["min_coin_value"] = min_coin_value
         if sub_choice ==3:
             spacer()
-            max_coin_value = 10000
             max_coin_value = sub_set_max_coin_value.main(config)
             config["max_coin_value"] = max_coin_value
         print()
