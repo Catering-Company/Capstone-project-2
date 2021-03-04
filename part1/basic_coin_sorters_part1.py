@@ -1,6 +1,8 @@
 # very basic coin sorter for part 1
+
 # import currency exchange function containing rates
 from currencyApi import Get_Currency_Rates    
+#--------------------------------------------------------
 
 # CONFIG is a constant list of the initial configurations of the program. In this program it cannot be changed
  
@@ -29,10 +31,10 @@ uk_coins_dict = {
 # Functions for the coin_calculator and multiple_coin_calculator:
 #
 #
-# Gets the user to input the amount of pennies that they want to exchange. Ensures the user
-# inputes a positive integer. This parameter
-# is a list that has a 'min_coin_value' and a 'max_coin_value' as keys. get_penny_amount
-# will ensure that the amount of pennies the user chooses is between these values of 
+# Gets the user to input the amount of pennies that they want to exchange. 
+# Ensures the user inputs a positive integer. 
+# This parameter is a list that has a 'min_coin_value' and a 'max_coin_value' as keys. 
+# get_penny_amount will ensure that the amount of pennies the user chooses is between these values of 
 # 'min_coin_value' and 'max_coin_value'.
 def get_penny_amount():
     try:
@@ -51,9 +53,9 @@ def get_penny_amount():
         print("This is not a valid amount of pennies.")
         return -5
     return int(pennies)
-#
-# Gets the coin-denomination that the user wants to turn their pennies into. If the user
-# enters anything other than a valid coin-denomination then get_denomination returns 
+
+# Gets the coin-denomination that the user wants to turn their pennies into. 
+# If the user enters anything other than a valid coin-denomination then get_denomination returns 
 # 'incorrect_usage' so that the user can be re-prompted via a while-loop in main().
 def get_denomination():
     denomination = input("What denomination? £2, £1, 50p, 20p or 10p? ")
@@ -73,6 +75,7 @@ def floor_calc(x, y):
 def coin_exchange(pennies, denomination):
     coin_amount = floor_calc(pennies, uk_coins_dict[f"{denomination}"])
     penny_remainder = pennies % uk_coins_dict[f"{denomination}"]
+    
     # Variables containing currency conversions
     GBPUSD = Get_Currency_Rates()['GBP_USD']
     GBPMGA = Get_Currency_Rates()['GBP_MGA']
