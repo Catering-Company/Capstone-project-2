@@ -239,8 +239,8 @@ config = {
     "max_coin_value": 10000,
 }
 
-# initialise GUI and display
+#initialise GUI and display
 app = QApplication(sys.argv)
-w = MainWindow()
+w = MainWindow()        
 w.show()
 app.exec_()
