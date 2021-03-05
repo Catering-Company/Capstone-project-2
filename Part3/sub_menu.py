@@ -1,5 +1,10 @@
 # GUI SUB MENU
 
+# NOTE THAT CURRENTLY THE SUB MENU PRINTS THE CONFIG IN THE CONSOLE EVERY TIME A REQUEST TO CHANGE THE
+# CONFIG IS MADE. THIS SHOULD BE REMOVED WHEN IMPLENTING INTO THE FINAL PROGRAM. TO REMOVE THIS
+# DELETE THE LINE 'print(config)' IN THE FUNCTIONS 'max_value_button_clicked(self)',
+# min_value_button_clicked(self), 'pounds_button_clicked(self)' and 'dollars_button_clicked(self)'.
+
 
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLineEdit, QLabel, QVBoxLayout, QMainWindow
 from PyQt5 import QtCore
