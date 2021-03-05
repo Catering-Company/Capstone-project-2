@@ -12,7 +12,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLineEdit, QLabe
 # - A min value greater than or equal to 10000.
 # - A min value greater than the current max value.
 #  If any of the above happens then min_coin_value returns a negative integer and
-# min_value_button_clicked will print 'Requet denied'.
+# min_value_button_clicked will print 'Request denied'.
 def min_coin_value(textboxValue):
     try:
         textboxValue = int(textboxValue)
