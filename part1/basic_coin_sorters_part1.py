@@ -136,7 +136,12 @@ def calculate(pennies, excluded_denomination):
 
 # result_print prints out the results of the list that the calculate function produces. 
 # The results are printed in a human-readable format.
-def result_print(uk_coins, uk_coins_amounts):
+def result_print(uk_coins, uk_coins_amounts, pennies):
+    # Variables containing currency conversions
+    GBPUSD = Get_Currency_Rates()['GBP_USD']
+    GBPMGA = Get_Currency_Rates()['GBP_MGA']
+    pennies_converted_to_USD = round((pennies/100) * GBPUSD, 2)
+    pennies_converted_to_MGA = round((pennies/100) * GBPMGA, 2)
     print("Your pennies can be exchanged for ", end = "")
     for i in range(0, len(uk_coins)):
         if uk_coins_amounts[i] > 1:
@@ -150,6 +155,8 @@ def result_print(uk_coins, uk_coins_amounts):
             print(f"and you'll have {uk_coins_amounts[-1]} pennies left over!")
         else:
             print(f"and you'll have {uk_coins_amounts[-1]} penny left over!")
+    print(f"In US Dollars that is {pennies_converted_to_USD}.")
+    print(f"In Malagasy Ariary that is {pennies_converted_to_MGA}.")
 #main program starts here
 
 def main():
@@ -187,8 +194,8 @@ def main():
             while excluded_denomination == "incorrect_usage":
                 excluded_denomination = exclude_denomination()
             uk_coins_amounts = calculate(pennies, excluded_denomination)
-            result_print(uk_coins, uk_coins_amounts)
-            #put in currency conversion here?
+            result_print(uk_coins, uk_coins_amounts, pennies)
+            
             repeat1 = input("Would you like to sort more pennies? Press n for no, or any key for yes.")
             if repeat1 == 'n':
                 break
