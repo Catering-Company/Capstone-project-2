@@ -1,4 +1,4 @@
-# FUNCTIONALITY TESTING FOR GUI SUB-MENU
+# GUI SUB MENU
 
 
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLineEdit, QLabel, QVBoxLayout, QMainWindow
@@ -27,16 +27,16 @@ class MainWindow(QMainWindow):
         self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         l.addWidget(self.text_display)
 
+# currency ---------------------------------
 
-
-# change currency title
+# currency title
         self.text_display2 = QLabel("Change Currency")
         self.text_display2.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         l.addWidget(self.text_display2)
 
 
 
-# change currency buttons and labels
+# currency buttons and labels
         self.pounds_button = QPushButton("Pounds Sterling")
         self.pounds_button.clicked.connect(self.pounds_button_clicked)
         l.addWidget(self.pounds_button)
@@ -50,6 +50,7 @@ class MainWindow(QMainWindow):
         self.currency_value_label.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter)
         l.addWidget(self.currency_value_label)
 
+#----------------------------------
 
 # spacing
         self.text_display = QLabel(self)
@@ -79,22 +80,19 @@ class MainWindow(QMainWindow):
         l.addWidget(self.result_min_text)
 
         
-        self.min_value_label = QLabel(" ")
+        self.min_value_label = QLabel(" \n ")
         self.min_value_label.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         l.addWidget(self.min_value_label)
 
-        
+# ---------------------------------
 
-        self.min_text = QLabel(" ")
-        self.min_text.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
-        l.addWidget(self.min_text)
 
 # spacing
 
         self.min_text = QLabel("-----------------")
         self.min_text.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         l.addWidget(self.min_text)
-# ---------------------------------
+
 
 
 # max value -----------------------
@@ -119,15 +117,10 @@ class MainWindow(QMainWindow):
         l.addWidget(self.result_max_text)
 
         
-        self.max_value_label = QLabel(" ")
+        self.max_value_label = QLabel(" \n ")
         self.max_value_label.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         l.addWidget(self.max_value_label)
 
-        
-
-        self.max_text = QLabel(" ")
-        self.max_text.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
-        l.addWidget(self.max_text)
 # ------------------------------------
 
         # builds window by collecting widgets added to l (I think that's how it works - Joe)
@@ -157,15 +150,15 @@ class MainWindow(QMainWindow):
         testing_value = self.min_coin_value(textboxValue)
         if testing_value >= 0:
                 config["min_coin_value"] = textboxValue
-                self.min_value_label.setText(f"The minimum coin value is now {textboxValue}.")
+                self.min_value_label.setText(f"The minimum coin value\nis now {textboxValue}.")
         if testing_value == -1:
-                self.min_value_label.setText(f"Request denied. The minimum must be at least 0.")
+                self.min_value_label.setText(f"Request denied. The minnmust be at least 0.")
         if testing_value == -2:
-                self.min_value_label.setText(f"Request denied. The minimum coin value must be below 10000.")
+                self.min_value_label.setText(f"Request denied. The min\nvalue must be below 10000.")
         if testing_value == -3:
-                self.min_value_label.setText(f"Request denied. That is larger than the maximum coin amount!")
+                self.min_value_label.setText(f"Request denied. That is\nlarger than the max value!")
         if testing_value == -4:
-                self.min_value_label.setText(f"Request denied. Please enter a number.")
+                self.min_value_label.setText(f"Request denied. Please\nenter a number.")
         print(config)
 
     def max_value_button_clicked(self):
@@ -173,15 +166,15 @@ class MainWindow(QMainWindow):
         testing_value = self.max_coin_value(textboxValue)
         if testing_value >= 0:
                 config["max_coin_value"] = textboxValue
-                self.max_value_label.setText(f"Result: The maximum coin value has been changed to {textboxValue}.")
+                self.max_value_label.setText(f"Result: The maximum coin\nvalue is now {textboxValue}.")
         if testing_value == -1:
-                self.max_value_label.setText(f"Result: Request denied. The maximum cannot be below 0!")
+                self.max_value_label.setText(f"Result: Request denied. The max\ncannot be below 0!")
         if testing_value == -2:
-                self.max_value_label.setText(f"Result: Request denied. The maximum coin value must be below 10000.")
+                self.max_value_label.setText(f"Result: Request denied. The max\nvalue must be below 10000.")
         if testing_value == -3:
-                self.max_value_label.setText(f"Result: Request denied. That is smaller than the minimum coin amount!")
+                self.max_value_label.setText(f"Result: Request denied. That is\nsmaller than the min value!")
         if testing_value == -4:
-                self.max_value_label.setText(f"Result: Request denied. Please enter a number.")
+                self.max_value_label.setText(f"Result: Request denied. Please\nenter a number.")
         print(config)
 
 
