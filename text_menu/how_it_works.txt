@@ -44,9 +44,9 @@ integer corresponding with each option into the console will take you to the res
 The 'Set details' section contains a sub menu that works similarly to the main menu. In this section, you can
 change the currency between US Dollars and Pounds Sterling. You can also change the minimum and maximum amount
 of coins that the program will accept from the user. Note that initially the program is set to Pounds Sterling,
-with the minimum amount of coins equal to 0 and the maximum equal to 10000. The minmum is capped at 10000. You
-cannot set the minimum to be higher than the current maximum or the maximum to be higher than the current
-minimum (because there is no reason to do so!). 
+with the minimum amount of coins equal to 0 and the maximum equal to 10000. The minmum and maximum are capped
+at 10000. You cannot set the minimum to be higher than the current maximum or the maximum to be higher than the
+current minimum (because there is no reason to do so!). 
 
 When using 'Coin calculator' and 'Multiple coin calculator' the current settings will be taken into account. 
 E.g. if you have set the currency to US Dollars, then you will presented with a calculator working in US Dollars;
