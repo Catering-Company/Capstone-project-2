@@ -24,7 +24,7 @@ def max_coin_value(config):
             print("The maximum cannot exceed 10000.")
             print()
             return -2
-        if max_coin < config["min_coin_value"]:  
+        if int(max_coin) < config["min_coin_value"]:  
             print("Request denied.")
             print("That is smaller than the minimum coin amount!")
             print()
@@ -32,7 +32,7 @@ def max_coin_value(config):
     except:
         print("Please enter a maximum amount of coins.")
         print()
-        return -3
+        return -4
     return int(max_coin)
 
 
