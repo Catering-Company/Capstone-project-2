@@ -1,4 +1,6 @@
 import sys
+import coinCalculator
+import variables
 
 from PyQt5.QtWidgets import (
     QApplication,
@@ -9,6 +11,8 @@ from PyQt5.QtWidgets import (
     QWidget,
 )
 from PyQt5 import QtCore
+
+
 
 
 # class for generic sub-window
@@ -25,7 +29,7 @@ class AnotherWindow(QWidget):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.window1 = AnotherWindow()
+        self.window1 = coinCalculator.CalcWindow()
         self.window2 = AnotherWindow()
         self.window3 = AnotherWindow()
         self.window4 = AnotherWindow()
@@ -106,11 +110,16 @@ class MainWindow(QMainWindow):
         else:
             self.window5.show()
 
-    def click_see_config(self):        
+    def click_see_config(self):    
+        currency = variables.currency
+        min_input = variables.min_input
+        max_input = variables.max_input    
         self.text_display.setText("Currency: " + currency + "\nMinimum Input (pence): " +
         str(min_input) + "\nMaximum Input (pence): " + str(max_input))
 
     def click_see_coins(self):
+        coins = variables.coins
+
         self.text_display.setText("We can convert to\n " + coins[0] + ", " + coins[1] + ", "+ coins[2] + ", "
         + coins[3] + " or "+ coins[4])
 
@@ -118,16 +127,17 @@ class MainWindow(QMainWindow):
 
 # main coin runs from here 
 
+# EDIT - variables are no stored in variables.py so need to be referenced as variables.blah
 # define defaults here
 # I think if these variables are to be changed in a GUI function needs to be
 #---- def function(self)
 #----   global variable
 #----   variable = 7
 
-currency = 'GBP'
-min_input = 0
-max_input = 10000
-coins = ['£2','£1','50p','20p','10p']
+#currency = 'GBP'
+#min_input = 0
+#max_input = 10000
+#coins = ['£2','£1','50p','20p','10p']
 
 # initialise GUI and display
 app = QApplication(sys.argv)
