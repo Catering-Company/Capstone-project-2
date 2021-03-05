@@ -92,7 +92,7 @@ def get_penny_amount(config):
         if int(pennies) > config["max_coin_value"]:
             print(f"The maximum coin value is set to {config['max_coin_value']}.")
             return -2
-        if int(pennies) <= 0:
+        if int(pennies) < 0:
             print("This is not a valid amount of pennies.")
             return -3
         if int(pennies) == 0:
@@ -115,7 +115,7 @@ def get_cent_amount(config):
         if int(cents) > config["max_coin_value"]:
             print(f"The maximum coin value is set to {config['max_coin_value']}.")
             return -2
-        if int(cents) <= 0:
+        if int(cents) < 0:
             print("This is not a valid amount of cents.")
             return -3
         if int(cents) == 0:
