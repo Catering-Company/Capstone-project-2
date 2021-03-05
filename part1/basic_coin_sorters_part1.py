@@ -150,7 +150,6 @@ def result_print(uk_coins, uk_coins_amounts):
             print(f"and you'll have {uk_coins_amounts[-1]} pennies left over!")
         else:
             print(f"and you'll have {uk_coins_amounts[-1]} penny left over!")
-
 #main program starts here
 
 def main():
