@@ -6,7 +6,7 @@ import json
 Api_key_file = open('./Apikey.txt', 'r')
 Api_key = Api_key_file.read()
 
-# This is a callable function that get live currency rates for GBP to USD and also GBP to MGA. 
+# This is a callable function that gets live currency rates for GBP to USD and also GBP to MGA. 
 # It is important it is a function so the rates are live every time they are called.
 # The output will be a dictionary which can be referenced and will allow more rates to be added if neccessary.
 def Get_Currency_Rates():
@@ -24,4 +24,6 @@ def Get_Currency_Rates():
         }
     # Will return dictionary of currency pair rates requested
     return conversion_rates
+
+
 
