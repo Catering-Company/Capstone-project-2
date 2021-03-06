@@ -1,32 +1,33 @@
-# basic coin sorter for part 1
+# Coin sorters and currency convertor for part 1.
 #---------------------------------------------------------
 
 # Module needed to request currency data.
 import requests
+#---------------------------------------------------------
 
 # Hidden Api key. Key is hidden for security.
 Api_key_file = open('./Apikey.txt', 'r')
 Api_key = Api_key_file.read()
+#---------------------------------------------------------
 
 # This is a callable function that gets live currency rates for GBP to USD and GBP to MGA. 
 # It is a function so the rates are live every time they are called.
 # The output will be a dictionary which can be referenced and will allow more rates to be added if neccessary.
 def Get_Currency_Rates():
-    # Get request for currency data. Request will return a JSON
+    # Get request for currency data. Request will return a JSON.
     data = requests.get('http://api.currencylayer.com/live?access_key='+Api_key+'&currencies=GBP,MGA&format=1')
     parsed_data = data.json()
-    # Output will be how many USD to 1 GBP
+    # Output will be how many USD to 1 GBP.
     GBP_USD = 1/parsed_data['quotes']['USDGBP']
-    # Output will be how many MGA to 1 GBP
+    # Output will be how many MGA to 1 GBP.
     GBP_MGA = parsed_data['quotes']['USDMGA'] * GBP_USD
-    # Dictionary that can be imported and used for conversion rates accross the project
+    # Dictionary that can be imported and used for conversion rates accross the project.
     conversion_rates = {
         'GBP_USD':GBP_USD, 
         'GBP_MGA':GBP_MGA
         }
-    # Will return dictionary of currency pair rates requested
+    # Will return dictionary of currency pair rates requested.
     return conversion_rates
-
 #---------------------------------------------------------
 
 # Global variables:
@@ -37,7 +38,7 @@ CONFIG = {
     "min_coin_value": 0,
     "max_coin_value": 10000,
 }
-# A useful list and dictionary for UK currency
+# A useful list and dictionary for UK currency.
 uk_coins = ["£2", "£1", "50p", "20p", "10p"]
 uk_coins_dict = {
         "£2": 200,
@@ -46,13 +47,12 @@ uk_coins_dict = {
         "20p": 20,
         "10p": 10,
     }
-
 #---------------------------------------------------------
 
 # Functions for the coin_calculator, multiple_coin_calculator and pounds converter:
 # Gets the user to input the amount of pennies that they want to sort, or pounds they want to convert. 
 # Ensures the user inputs a positive integer. 
-# Ensures that the amount of pennies the user chooses is greater than 0 and less than or equal to 10000
+# Ensures that the amount of pennies the user chooses is greater than 0 and less than or equal to 10000.
 def get_penny_amount():
     try:
         pennies = input("How many pennies do you have? Please enter a positive number: ")
@@ -95,10 +95,11 @@ def get_pounds_amount():
         # Warns user if input is greater than 100.
         if pounds > 100:
             print("The maximum Pounds value is set to 100.")
-    # Warns user if input is not valid. E.g. 'abc'
+    # Warns user if input is not valid. E.g. 'abc'.
     except:
         print("This is not a valid amount of Pounds.")
     return pounds_amount
+#---------------------------------------------------------
 
 # Gets the coin-denomination that the user wants to turn their pennies into. 
 # If the user enters anything other than a valid coin-denomination then get_denomination returns 
@@ -111,9 +112,10 @@ def get_denomination():
         print("Please choose £2, £1, 50p, 20p or 10p.")
         return "incorrect_usage"
 
-#Calculates the floor of x when divided by y
+# Calculates the floor of x when divided by y.
 def floor_calc(x, y):
     return int((x / y) // 1)
+#---------------------------------------------------------
 
 # Given an amount of pennies and a coin-denomination, coin_exchange prints 
 # the number of said coins you can receive in exchange for your pennies, along
@@ -152,7 +154,7 @@ def coin_exchange(pennies, denomination):
         print(f"In US Dollars that is {pennies_converted_to_USD}")
         print(f"In Malagasy Ariary that is {pennies_converted_to_MGA}")
     return 0
-
+#---------------------------------------------------------
 
 # Gets the coin-denomination that the user wants to exclude. If an incorrect string is 
 # entered then exclude_denomination returns 'incorrect_usage' so that the user can be
@@ -164,6 +166,7 @@ def exclude_denomination():
     else:
         print("Please choose £2, £1, 50p, 20p or 10p.")
         return "incorrect_usage"
+#---------------------------------------------------------
 
 # Calculates the amount of each coin the user can receive for their pennies, prioritising
 # the higher denominations. The results are returned in a list, uk_coins_amounts. Each 
@@ -210,7 +213,6 @@ def result_print(uk_coins, uk_coins_amounts, pennies):
             print(f"and you'll have {uk_coins_amounts[-1]} penny left over!")
     print(f"In US Dollars that is {pennies_converted_to_USD}")
     print(f"In Malagasy Ariary that is {pennies_converted_to_MGA}")
-
 #---------------------------------------------------------
 
 # Main program starts here.
@@ -264,15 +266,15 @@ def main():
         # Currency Converter functionality.
         if sorter_choice == '3':
             pounds = get_pounds_amount()
-            #gets user to input a different amount if they have entered an incorrect amount
+            # Gets user to input a different amount if they have entered an incorrect amount
             while pounds == 0:
                 pounds = get_pounds_amount()
-            #converts pounds to USD or MGA if pound amount is between 0.01 and 100.00 inclusive
+            # Converts pounds to USD or MGA if pound amount is between 0.01 and 100.00 inclusive.
             GBPUSD = Get_Currency_Rates()['GBP_USD']
             GBPMGA = Get_Currency_Rates()['GBP_MGA']
             pounds_converted_to_USD = round(pounds * GBPUSD, 2)
             pounds_converted_to_MGA = round(pounds * GBPMGA, 2)
-            #print "{:12.2f}".format(x)
+            # Print "{:12.2f}".format(x).
             print(f"The amount was {pounds} in Pounds Sterling.")
             print(f"In US Dollars that is {pounds_converted_to_USD}")
             print(f"In Malagasy Ariary that is {pounds_converted_to_MGA}")
