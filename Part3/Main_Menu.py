@@ -1,5 +1,6 @@
 import sys
 import coinCalculator
+import multi_coin_calculator
 import variables
 
 from PyQt5.QtWidgets import (
@@ -31,7 +32,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         # put the sub-window here FILE_NAME.CLASS_NAME()
         self.window1 = coinCalculator.CalcWindow()
-        self.window2 = AnotherWindow()
+        self.window2 = multi_coin_calculator.CalcWindow()
         self.window3 = AnotherWindow()
         self.window4 = AnotherWindow()
         self.window5 = AnotherWindow()

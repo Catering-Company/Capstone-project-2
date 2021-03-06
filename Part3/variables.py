@@ -10,5 +10,17 @@ single_inputted_amount = -1
 single_denomination = 200
 
 # variables for multiple coin calculator
-multi_inputted_amount = 0
-multi_denomination = 0
+multi_inputted_amount = -2
+multi_denomination = [200,100,50,20,10]
+used_denomination = []
+excluded_denomination = 200
+
+# A useful list and dictionary for UK currency
+uk_coins = ["£2", "£1", "50p", "20p", "10p"]
+uk_coins_dict = {
+        "£2": 200,
+        "£1": 100,
+        "50p": 50,
+        "20p": 20,
+        "10p": 10,
+    }
