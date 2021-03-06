@@ -13,9 +13,9 @@ from PyQt5.QtWidgets import (
 from PyQt5 import QtCore
 
 
-
-
-# class for generic sub-window
+# template for generic sub-window
+# copy this to a new file to make a new window
+# change the name and remember to change it when referencing from main window
 class AnotherWindow(QWidget):
 
     def __init__(self):
@@ -29,6 +29,7 @@ class AnotherWindow(QWidget):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        # put the sub-window here FILE_NAME.CLASS_NAME()
         self.window1 = coinCalculator.CalcWindow()
         self.window2 = AnotherWindow()
         self.window3 = AnotherWindow()

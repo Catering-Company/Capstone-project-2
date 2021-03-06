@@ -5,41 +5,160 @@ from PyQt5.QtWidgets import (
     QPushButton,
     QVBoxLayout,
     QWidget,
-    QComboBox
+    QComboBox,
+    QLineEdit
 )
 from PyQt5 import QtCore
-
 import variables
 
+# POSSIBLE ISSUES
+# doesn't reset window when clicked off
+# successful calculation -> invalid input -> still displays old calculation
+
 class CalcWindow(QWidget):
-    coin_to_use = 200
+    
     
     def __init__(self):
         super().__init__()
         layout = QVBoxLayout()
-        self.label = QLabel("Let's Count Coins")
-        layout.addWidget(self.label)
+
+# sub menu title at top of window
+        self.text_display = QLabel(self)
+        self.text_display.setText("Single Coin Calculator")
+        self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
+        layout.addWidget(self.text_display)
+
+# spacing
+        self.text_display = QLabel(self)
+        self.text_display.setText("--------------------------")
+        self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
+        layout.addWidget(self.text_display)
+     
         
+# ask how many pennies they want to input
+        self.coin_input_title = QLabel("How many pennies do you want to input?")
+        self.coin_input_title.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
+        layout.addWidget(self.coin_input_title)
 
-        #button1 = QPushButton("Edit Config")
-        #button1.clicked.connect(self.editConfig)
-        #layout.addWidget(button1)
-        self.comboBox = QComboBox(self)
-        self.comboBox.addItem("£2", 200)
-        self.comboBox.addItem("£1", 100)
-        self.comboBox.addItem("50p",  50)
-        self.comboBox.addItem("20p", 20)
-        self.comboBox.addItem("10p", 10)
+        self.coin_input_box = QLineEdit(self)
+        self.coin_input_box.setPlaceholderText("Enter a amount (in pence)")
+        layout.addWidget(self.coin_input_box)
+
+        self.coin_input_button = QPushButton("Submit")
+        self.coin_input_button.clicked.connect(self.coin_input_button_clicked)
+        layout.addWidget(self.coin_input_button)
+
+        self.result_input_text = QLabel(" ")
+        self.result_input_text.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
+        layout.addWidget(self.result_input_text)
+
+# spacing
+        self.text_display = QLabel(self)
+        self.text_display.setText("--------------------------")
+        self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
+        layout.addWidget(self.text_display)
+
+# dropdown menu for coin denomination choice
+        self.denom_title = QLabel("Select the denomination you would like.")
+        self.denom_title.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
+        layout.addWidget(self.denom_title)
+
+        self.denom_dropdown = QComboBox(self)
+        # first argument displayed
+        # second argument used to set denomination
+        self.denom_dropdown.addItem("£2", 200)
+        self.denom_dropdown.addItem("£1", 100)
+        self.denom_dropdown.addItem("50p", 50)
+        self.denom_dropdown.addItem("20p", 20)
+        self.denom_dropdown.addItem("10p", 10)
     
-        self.comboBox.activated.connect(self.select_coin)
-        layout.addWidget(self.comboBox)
+        self.denom_dropdown.activated.connect(self.select_coin)
+        layout.addWidget(self.denom_dropdown)
 
+# spacing
+        self.text_display = QLabel(self)
+        self.text_display.setText("--------------------------")
+        self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
+        layout.addWidget(self.text_display)
 
+# button to calculate
+        self.calculate_button = QPushButton("Calculate")
+        self.calculate_button.clicked.connect(self.calculate_button_clicked)
+        layout.addWidget(self.calculate_button)
+
+        self.calculate_text = QLabel(" ")
+        self.calculate_text.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
+        layout.addWidget(self.calculate_text)
+
+# display everything
         self.setLayout(layout)
 
-# this is a test for editing variables between windows        
-#    def editConfig(self):
-#        variables.min_input = 19
 
+# TESTING CODE
+    #def editConfig(self):
+    #    variables.min_input = 19
+
+
+ # -----FUNCTIONS------   
+
+
+# set the denomination using the dropdown menu
     def select_coin(self,index):
-        print(self.comboBox.itemData(index))
+        variables.single_denomination = int(self.denom_dropdown.itemData(index))
+
+        #---TESTING---
+        #print(variables.single_denomination)
+        #print(type(variables.single_denomination))
+        #print(self.denom_dropdown.itemData(index))
+
+# button function to display if the inputted amount is valid
+# calls check_input_value
+    def coin_input_button_clicked(self):
+        textboxValue = self.coin_input_box.text()
+        testing_value = self.check_input_value(textboxValue)
+        if testing_value >= 0:
+            self.result_input_text.setText(f"You inputted {textboxValue} pence.")
+        if testing_value == -1:
+            self.result_input_text.setText(f"Request denied. Entered less than the min value.")
+        if testing_value == -2:
+            self.result_input_text.setText(f"Request denied. Entered more than the max value.")
+        if testing_value == -3:
+            self.result_input_text.setText(f"Request denied. Please\nenter a number.")
+ 
+# checks if the inputted amount is a number and within the min/ max
+    def check_input_value(self, textboxValue):
+        try:
+            textboxValue = int(textboxValue)
+            if int(textboxValue) < variables.min_input:
+                    return -1
+            if int(textboxValue) > variables.max_input:
+                    return -2
+        except:
+            return -3
+        
+        variables.single_inputted_amount = int(textboxValue)
+        #print(variables.single_inputted_amount)
+        return int(textboxValue)
+
+# calculate button function
+# displays the result
+    def calculate_button_clicked(self):
+        # accesses the inputs (which should already have been validated)
+        amount = variables.single_inputted_amount
+        denom = variables.single_denomination
+        # gets the string value of the denomination (200 = '£2')
+        index = variables.coins_value.index(denom)
+        denom_str = variables.coins[index]
+
+        # single_inputted_amount is initialised as -1; checks if user has enetered input
+        if variables.single_inputted_amount == -1:
+            self.calculate_text.setText("You haven't inputted an amount")
+        else:
+            # 'calculator'
+            number_of_denom = amount//denom
+            remainder = amount%denom
+            self.calculate_text.setText(str(number_of_denom) + " " + denom_str + " ('s) and a remainder of " + str(remainder)
+            + "p")
+
+
+    
