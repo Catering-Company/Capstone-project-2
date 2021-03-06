@@ -54,6 +54,25 @@ def get_penny_amount():
         return -5
     return int(pennies)
 
+
+def get_pounds_amount():
+    try:
+        pounds = input("Please enter the amount you wish to convert, in Pounds Sterling, between 0.00 and 100.00: ")
+        pounds = round(float(pounds), 2)
+        if float(pounds) < 0:
+            print("This is not a valid amount of Pounds.")
+            return -3
+        if float(pounds) == 0:
+            print("You need to have some Pounds in order to convert them!")
+            return -4
+        if float(pounds) > 100:
+            print("The maximum Pounds value is set to 100.")
+            return -5
+    except:
+        print("This is not a valid amount of Pounds.")
+        return -5
+    return float(pounds)
+
 # Gets the coin-denomination that the user wants to turn their pennies into. 
 # If the user enters anything other than a valid coin-denomination then get_denomination returns 
 # 'incorrect_usage' so that the user can be re-prompted via a while-loop in main().
@@ -84,22 +103,22 @@ def coin_exchange(pennies, denomination):
     if penny_remainder == 0:
         if coin_amount == 1:
             print(f"You can exchange your pennies for exactly {coin_amount} {denomination} coin.")
-            print(f"In US Dollars that is {pennies_converted_to_USD}.")
-            print(f"In Malagasy Ariary that is {pennies_converted_to_MGA}.")
+            print(f"In US Dollars that is {pennies_converted_to_USD}")
+            print(f"In Malagasy Ariary that is {pennies_converted_to_MGA}")
         if coin_amount > 1:
             print(f"You can exchange your pennies for exactly {coin_amount} {denomination} coins.")
-            print(f"In US Dollars that is {pennies_converted_to_USD}.")
-            print(f"In Malagasy Ariary that is {pennies_converted_to_MGA}.")           
+            print(f"In US Dollars that is {pennies_converted_to_USD}")
+            print(f"In Malagasy Ariary that is {pennies_converted_to_MGA}")           
     elif coin_amount == 0:
         print("You don't have enough pennies to exchange!")
     elif coin_amount == 1:
         print(f"You can exchange your pennies for {coin_amount} {denomination} coin with {penny_remainder}p to spare.")
-        print(f"In US Dollars that is {pennies_converted_to_USD}.")
-        print(f"In Malagasy Ariary that is {pennies_converted_to_MGA}.")
+        print(f"In US Dollars that is {pennies_converted_to_USD}")
+        print(f"In Malagasy Ariary that is {pennies_converted_to_MGA}")
     else: 
         print(f"You can exchange your pennies for {coin_amount} {denomination} coins with {penny_remainder}p to spare.")
-        print(f"In US Dollars that is {pennies_converted_to_USD}.")
-        print(f"In Malagasy Ariary that is {pennies_converted_to_MGA}.")
+        print(f"In US Dollars that is {pennies_converted_to_USD}")
+        print(f"In Malagasy Ariary that is {pennies_converted_to_MGA}")
     return 0
 
 
@@ -155,8 +174,8 @@ def result_print(uk_coins, uk_coins_amounts, pennies):
             print(f"and you'll have {uk_coins_amounts[-1]} pennies left over!")
         else:
             print(f"and you'll have {uk_coins_amounts[-1]} penny left over!")
-    print(f"In US Dollars that is {pennies_converted_to_USD}.")
-    print(f"In Malagasy Ariary that is {pennies_converted_to_MGA}.")
+    print(f"In US Dollars that is {pennies_converted_to_USD}")
+    print(f"In Malagasy Ariary that is {pennies_converted_to_MGA}")
 #main program starts here
 
 def main():
@@ -165,9 +184,9 @@ def main():
     print(CONFIG)
     print("\n")
     
-    sorter_choice = input("Please select 1 for the single coin sorter, or 2 for the multiple coin sorter.")
+    sorter_choice = input("Please select 1 for the single coin sorter, 2 for the multiple coin sorter, or 3 for currency conversion.")
     #Used for if invalid input entered
-    valid =['1', '2']
+    valid =['1', '2', '3']
     while sorter_choice != valid:
 
         if sorter_choice == '1':
@@ -195,7 +214,17 @@ def main():
                 excluded_denomination = exclude_denomination()
             uk_coins_amounts = calculate(pennies, excluded_denomination)
             result_print(uk_coins, uk_coins_amounts, pennies)
-            
+
+        if sorter_choice == '3':
+            pounds = get_pounds_amount()
+            GBPUSD = Get_Currency_Rates()['GBP_USD']
+            GBPMGA = Get_Currency_Rates()['GBP_MGA']
+            pounds_converted_to_USD = round(pounds * GBPUSD, 2)
+            pounds_converted_to_MGA = round(pounds * GBPMGA, 2)
+            print(f"The amount was {pounds} in Pounds Sterling.")
+            print(f"In US Dollars that is {pounds_converted_to_USD}")
+            print(f"In Malagasy Ariary that is {pounds_converted_to_MGA}")
+
             repeat1 = input("Would you like to sort more pennies? Press n for no, or any key for yes.")
             if repeat1 == 'n':
                 break
