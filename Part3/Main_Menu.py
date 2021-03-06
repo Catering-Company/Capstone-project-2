@@ -86,6 +86,8 @@ class MainWindow(QMainWindow):
 
         else:
             self.window1.show()
+            self.window1.coin_input_box.setPlaceholderText(f"Enter an amount (in {variables.currency_config['currency_word']})")
+
 
     def toggle_window2(self, checked):
         if self.window2.isVisible():
@@ -116,14 +118,18 @@ class MainWindow(QMainWindow):
             self.window5.show()
 
     def click_see_config(self):    
-        currency = variables.currency
+        curr = variables.currency_config["currency"]
+        curr_word = variables.currency_config["currency_word"]
+
+        #currency = variables.currency
         min_input = variables.min_input
         max_input = variables.max_input    
-        self.text_display.setText("Currency: " + currency + "\nMinimum Input (pence): " +
-        str(min_input) + "\nMaximum Input (pence): " + str(max_input))
+        self.text_display.setText("Currency: " + curr + f"\nMinimum Input ({curr_word}): " +
+        str(min_input) + f"\nMaximum Input ({curr_word}): " + str(max_input))
 
     def click_see_coins(self):
         coins = variables.coins
+        print(coins)
 
         self.text_display.setText("We can convert to\n " + coins[0] + ", " + coins[1] + ", "+ coins[2] + ", "
         + coins[3] + " or "+ coins[4])

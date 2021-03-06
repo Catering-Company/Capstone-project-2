@@ -38,13 +38,15 @@ class CalcWindow(QWidget):
 
 # ask how many pennies they want to input
 # text label
-        self.coin_input_title = QLabel("How many pennies do you want to input?")
+        self.coin_input_title = QLabel("How much do you want to input?")
         self.coin_input_title.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         layout.addWidget(self.coin_input_title)
 
 # input text box
         self.coin_input_box = QLineEdit(self)
-        self.coin_input_box.setPlaceholderText("Enter a amount (in pence)")
+        print(variables.currency_config['currency_word'])
+        #self.coin_input_box.setPlaceholderText(f"Enter an amount (in {variables.currency_config['currency_word']})")
+
         layout.addWidget(self.coin_input_box)
 
 # button
@@ -76,11 +78,14 @@ class CalcWindow(QWidget):
         self.denom_dropdown = QComboBox(self)
         # first argument displayed
         # second argument used to set denomination
+
+        
         self.denom_dropdown.addItem("£2", 200)
         self.denom_dropdown.addItem("£1", 100)
         self.denom_dropdown.addItem("50p", 50)
         self.denom_dropdown.addItem("20p", 20)
         self.denom_dropdown.addItem("10p", 10)
+    
     
         self.denom_dropdown.activated.connect(self.select_coin)
         layout.addWidget(self.denom_dropdown)
@@ -132,7 +137,7 @@ class CalcWindow(QWidget):
         testing_value = self.check_input_value(textboxValue)
         self.calculate_text.setText("") # removes calculated text if user starts putting in new input
         if testing_value >= 0:
-            self.result_input_text.setText(f"You inputted {textboxValue} pence.")
+            self.result_input_text.setText(f"You inputted {textboxValue}" + variables.currency_config["currency_word"])
         if testing_value == -1:
             self.result_input_text.setText(f"Request denied. Entered less \nthan the min value.")
         if testing_value == -2:
@@ -173,7 +178,7 @@ class CalcWindow(QWidget):
             number_of_denom = amount//denom
             remainder = amount%denom
             self.calculate_text.setText(str(number_of_denom) + " " + denom_str + " ('s) and a remainder of " + str(remainder)
-            + "p")
+            + " " + variables.currency_config['currency_word'])
 
 # when window closes; resets the calculator
     def closeEvent(self,event):
@@ -181,4 +186,7 @@ class CalcWindow(QWidget):
         self.result_input_text.setText("")
         self.coin_input_box.clear()
         variables.single_inputted_amount = -1
+        #self.coin_input_box.setPlaceholderText(f"Enter an amount (in {variables.currency_config['currency_word']})")
+
+
     
