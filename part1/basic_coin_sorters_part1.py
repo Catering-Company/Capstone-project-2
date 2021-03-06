@@ -1,8 +1,33 @@
-# very basic coin sorter for part 1
+# basic coin sorter for part 1
+#---------------------------------------------------------
 
-# import currency exchange function containing rates
-from currencyApi import Get_Currency_Rates    
-#--------------------------------------------------------
+# Module need for to request currency data. Module for working with json also.
+import requests
+
+# Hidden Api key. Key is hidden for security
+Api_key_file = open('./Apikey.txt', 'r')
+Api_key = Api_key_file.read()
+
+# This is a callable function that gets live currency rates for GBP to USD and also GBP to MGA. 
+# It is important it is a function so the rates are live every time they are called.
+# The output will be a dictionary which can be referenced and will allow more rates to be added if neccessary.
+def Get_Currency_Rates():
+    # Get request for currency data. Request will return a JSON
+    data = requests.get('http://api.currencylayer.com/live?access_key='+Api_key+'&currencies=GBP,MGA&format=1')
+    parsed_data = data.json()
+    # Output will be how many USD to 1 GBP
+    GBP_USD = 1/parsed_data['quotes']['USDGBP']
+    # Output will be how many MGA to 1 GBP
+    GBP_MGA = parsed_data['quotes']['USDMGA'] * GBP_USD
+    # Dictionary that can be imported and used for conversion rates accross the project
+    conversion_rates = {
+        'GBP_USD':GBP_USD, 
+        'GBP_MGA':GBP_MGA
+        }
+    # Will return dictionary of currency pair rates requested
+    return conversion_rates
+
+#---------------------------------------------------------
 
 # CONFIG is a constant list of the initial configurations of the program. In this program it cannot be changed
  
@@ -12,8 +37,6 @@ CONFIG = {
     "max_coin_value": 10000,
 }
 # Global variables:
-#
-#
 # A useful list and dictionary for UK currency
 uk_coins = ["£2", "£1", "50p", "20p", "10p"]
 uk_coins_dict = {
@@ -23,14 +46,10 @@ uk_coins_dict = {
         "20p": 20,
         "10p": 10,
     }
-#---------------------------------------------------------
-#---------------------------------------------------------
-
 
 #---------------------------------------------------------
+
 # Functions for the coin_calculator and multiple_coin_calculator:
-#
-#
 # Gets the user to input the amount of pennies that they want to exchange. 
 # Ensures the user inputs a positive integer. 
 # This parameter is a list that has a 'min_coin_value' and a 'max_coin_value' as keys. 
@@ -239,11 +258,5 @@ def main():
                 break
 
         sorter_choice = input("Please select 1 for the single coin sorter, 2 for the multiple coin sorter, or 3 for currency conversion.")
-
-        
-   
-
-            
-
 
 main()
