@@ -1,5 +1,6 @@
 import sys
 import coinCalculator
+import configMenu
 import variables
 
 from PyQt5.QtWidgets import (
@@ -34,7 +35,7 @@ class MainWindow(QMainWindow):
         self.window2 = AnotherWindow()
         self.window3 = AnotherWindow()
         self.window4 = AnotherWindow()
-        self.window5 = AnotherWindow()
+        self.window5 = configMenu.ConfigWindow()
 
 
         # l is our canvas, have to add components to l using l.addWidget(...)
@@ -69,6 +70,9 @@ class MainWindow(QMainWindow):
         button5.clicked.connect(self.toggle_window5)
         l.addWidget(button5)
 
+        clearButton = QPushButton("Clear")
+        clearButton.clicked.connect(self.clearText)
+        l.addWidget(clearButton)
         # builds window by collecting widgets added to l (I think that's how it works - Joe)
         w = QWidget()
         w.setLayout(l)
@@ -123,6 +127,9 @@ class MainWindow(QMainWindow):
 
         self.text_display.setText("We can convert to\n " + coins[0] + ", " + coins[1] + ", "+ coins[2] + ", "
         + coins[3] + " or "+ coins[4])
+
+    def clearText(self):
+        self.text_display.setText("Welcome to the Calculator")
 
 
 

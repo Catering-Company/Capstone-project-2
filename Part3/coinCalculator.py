@@ -12,21 +12,21 @@ from PyQt5 import QtCore
 import variables
 
 # POSSIBLE ISSUES
-# doesn't reset window when clicked off
-# successful calculation -> invalid input -> still displays old calculation
 
 class CalcWindow(QWidget):
-    
-    
     def __init__(self):
         super().__init__()
         layout = QVBoxLayout()
 
-# sub menu title at top of window
+# title -----------------------------------------
+
+# sub menu title at top of window 
         self.text_display = QLabel(self)
         self.text_display.setText("Single Coin Calculator")
         self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         layout.addWidget(self.text_display)
+
+# -----------------------------------------------
 
 # spacing
         self.text_display = QLabel(self)
@@ -34,29 +34,39 @@ class CalcWindow(QWidget):
         self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         layout.addWidget(self.text_display)
      
-        
+# coin input -----------------------------------
+
 # ask how many pennies they want to input
+# text label
         self.coin_input_title = QLabel("How many pennies do you want to input?")
         self.coin_input_title.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         layout.addWidget(self.coin_input_title)
 
+# input text box
         self.coin_input_box = QLineEdit(self)
         self.coin_input_box.setPlaceholderText("Enter a amount (in pence)")
         layout.addWidget(self.coin_input_box)
 
+# button
         self.coin_input_button = QPushButton("Submit")
         self.coin_input_button.clicked.connect(self.coin_input_button_clicked)
         layout.addWidget(self.coin_input_button)
 
+# result text box
         self.result_input_text = QLabel(" ")
         self.result_input_text.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         layout.addWidget(self.result_input_text)
+
+# -----------------------------------------------
 
 # spacing
         self.text_display = QLabel(self)
         self.text_display.setText("--------------------------")
         self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         layout.addWidget(self.text_display)
+
+
+# Coin denomination choice ----------------------
 
 # dropdown menu for coin denomination choice
         self.denom_title = QLabel("Select the denomination you would like.")
@@ -74,6 +84,8 @@ class CalcWindow(QWidget):
     
         self.denom_dropdown.activated.connect(self.select_coin)
         layout.addWidget(self.denom_dropdown)
+    
+# -----------------------------------------------
 
 # spacing
         self.text_display = QLabel(self)
@@ -81,16 +93,18 @@ class CalcWindow(QWidget):
         self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         layout.addWidget(self.text_display)
 
-# button to calculate
+# Calculate button ------------------------------
+# button
         self.calculate_button = QPushButton("Calculate")
         self.calculate_button.clicked.connect(self.calculate_button_clicked)
         layout.addWidget(self.calculate_button)
 
+# output text box
         self.calculate_text = QLabel(" ")
         self.calculate_text.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         layout.addWidget(self.calculate_text)
 
-# display everything
+# display the window
         self.setLayout(layout)
 
 
@@ -99,8 +113,8 @@ class CalcWindow(QWidget):
     #    variables.min_input = 19
 
 
- # -----FUNCTIONS------   
 
+# ----------------------FUNCTIONS----------------------------   
 
 # set the denomination using the dropdown menu
     def select_coin(self,index):
@@ -116,12 +130,13 @@ class CalcWindow(QWidget):
     def coin_input_button_clicked(self):
         textboxValue = self.coin_input_box.text()
         testing_value = self.check_input_value(textboxValue)
+        self.calculate_text.setText("") # removes calculated text if user starts putting in new input
         if testing_value >= 0:
             self.result_input_text.setText(f"You inputted {textboxValue} pence.")
         if testing_value == -1:
-            self.result_input_text.setText(f"Request denied. Entered less than the min value.")
+            self.result_input_text.setText(f"Request denied. Entered less \nthan the min value.")
         if testing_value == -2:
-            self.result_input_text.setText(f"Request denied. Entered more than the max value.")
+            self.result_input_text.setText(f"Request denied. Entered more \nthan the max value.")
         if testing_value == -3:
             self.result_input_text.setText(f"Request denied. Please\nenter a number.")
  
@@ -135,7 +150,7 @@ class CalcWindow(QWidget):
                     return -2
         except:
             return -3
-        
+    
         variables.single_inputted_amount = int(textboxValue)
         #print(variables.single_inputted_amount)
         return int(textboxValue)
@@ -160,5 +175,10 @@ class CalcWindow(QWidget):
             self.calculate_text.setText(str(number_of_denom) + " " + denom_str + " ('s) and a remainder of " + str(remainder)
             + "p")
 
-
+# when window closes; resets the calculator
+    def closeEvent(self,event):
+        self.calculate_text.setText("")
+        self.result_input_text.setText("")
+        self.coin_input_box.clear()
+        variables.single_inputted_amount = -1
     
