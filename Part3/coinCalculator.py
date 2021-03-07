@@ -137,7 +137,7 @@ class CalcWindow(QWidget):
         testing_value = self.check_input_value(textboxValue)
         self.calculate_text.setText("") # removes calculated text if user starts putting in new input
         if testing_value >= 0:
-            self.result_input_text.setText(f"You inputted {textboxValue}" + variables.currency_config["currency_word"])
+            self.result_input_text.setText(f"You inputted {textboxValue} " + variables.currency_config["currency_word"])
         if testing_value == -1:
             self.result_input_text.setText(f"Request denied. Entered less \nthan the min value.")
         if testing_value == -2:
