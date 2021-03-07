@@ -1,11 +1,8 @@
-# GENERAL FUNCTIONS THAT ARE USED THROUGHOUT MULTIPLE PARTS OF THE PROGRAM
-
-
+# GENERAL FUNCTIONS THAT ARE USED THROUGHOUT MULTIPLE PARTS OF THE PROGRAM.
 # --------------------------------------------------
+
 # Global variables:
-#
-#
-# A useful list and dictionary for both US and UK currency
+# A useful list and dictionary for both US and UK currency.
 uk_coins = ["£2", "£1", "50p", "20p", "10p"]
 uk_coins_dict = {
         "£2": 200,
@@ -22,11 +19,11 @@ us_coins_dict = {
         "20c": 20,
         "10c": 10,
     }
-
+# --------------------------------------------------
 
 # CONFIG is a constant list of the initial configurations of the program. In the main() section of
 # main_menu.py, the list-variable config is set to equal CONFIG. config can be changed
-# in the 'Set Details' section.  The values of config can be printed in the 'Display Program
+# in the 'Set Details' section. The values of config can be printed in the 'Display Program
 # Configurations' section. config is used in the 'Coin Calculator' and the 'Multiple Coin
 # Calculator' sections in order to ensure that the user enters an amount of pennies that falls 
 # within the correct range. I.e if config["min_coin_value"] = 100 and 
@@ -41,8 +38,6 @@ CONFIG = {
 }
 #---------------------------------------------------
 
-
-#---------------------------------------------------
 # Functions: 
 #
 #
@@ -75,7 +70,7 @@ def spacer():
 #Calculates the floor of x when divided by y
 def floor_calc(x, y):
     return int((x / y) // 1)
-
+# --------------------------------------------------
 
 # Gets the user to input the amount of pennies that they want to exchange. Ensures the user
 # inputs a positive integer. get_penny_amount takes the parameter config. This parameter
@@ -102,7 +97,7 @@ def get_penny_amount(config):
         print("This is not a valid amount of pennies.")
         return -5
     return int(pennies)
-
+# --------------------------------------------------
 
 # Same as get_penny_amount but with cents. 
 def get_cent_amount(config):

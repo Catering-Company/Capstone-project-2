@@ -1,15 +1,16 @@
 # CODE FOR SETTING THE MINIMUM COIN INPUT VALUE ( CHOICE 2 OF THE SUB-MENU )
-
+# --------------------------------------------------
 
 # Gets the user to input a new minimum amount of coins that the user can enter 
-# into the Coin Calulator and Mutiple Coin Calculator. There are restrictions
-# in place to prevent the user from entering:
+# into the Coin Calulator and Mutiple Coin Calculator.
+# There are restrictions in place to prevent the user from entering:
 # - Any non-integer.
 # - A min value less than 0.
 # - A min value greater than or equal to 10000.
 # - A min value greater than the current max value.
-#  If any of the above happens then min_coin_value returns a negative integer. A
-#  while-loop in main(config) will then rerun min_coin_value.
+#  If any of the above happens then min_coin_value returns a negative integer.
+# A while-loop in main(config) will then rerun min_coin_value.
+
 def min_coin_value(config):
     try:
         min_coin = input("What is the minimum amount of coins you want the machine to accept? ")
@@ -34,13 +35,14 @@ def min_coin_value(config):
         print()
         return -3
     return int(min_coin)
+# --------------------------------------------------
 
+# Returns the number that the user has inputted, provided that the number is greater than 0.
+# If the number is 0 or less then the user is re-prompted.
 
-# Returns the number that the user has inputted, provided that the number is greater than 0. If
-# the number is 0 or less then the user is re-prompted.
 def main(config):
     min_coin = min_coin_value(config)
     while min_coin < 0:
         min_coin = min_coin_value(config)
     return min_coin
-
+# --------------------------------------------------
