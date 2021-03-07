@@ -106,21 +106,21 @@ class MainWindow(QMainWindow):
             self.window2.show()
 
     def toggle_window3(self, checked):
-        if self.window1.isVisible():
+        if self.window3.isVisible():
             self.window3.hide()
 
         else:
             self.window3.show()
 
     def toggle_window4(self, checked):
-        if self.window1.isVisible():
+        if self.window4.isVisible():
             self.window4.hide()
 
         else:
             self.window4.show()
 
     def toggle_window5(self, checked):
-        if self.window1.isVisible():
+        if self.window5.isVisible():
             self.window5.hide()
 
         else:
