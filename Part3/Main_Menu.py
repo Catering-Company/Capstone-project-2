@@ -212,16 +212,16 @@ QPushButton{
     }
 
 QMainWindow {
-    background: #023638;
+    background: #1c2d30;
 }
 
 CalcWindow {
-    background: #023638;
+    background: #1c2d30;
 
 }
 
 ConfigWindow { 
-    background: #023638;
+    background: #1c2d30;
 }
 
 QLineEdit {
