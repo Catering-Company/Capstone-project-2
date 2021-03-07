@@ -134,6 +134,8 @@ class CalcWindow(QWidget):
         variables.multi_inputted_amount = int(textboxValue)
         #print(variables.single_inputted_amount)
         return int(textboxValue)
+    
+   
 
 
 # calculate button function
@@ -150,31 +152,34 @@ class CalcWindow(QWidget):
         if variables.multi_inputted_amount == -2:
             self.calculate_text.setText("You haven't inputted an amount")
         else:
-            # 'calculator'
+             # 'calculator'
+            
+            
+            
+            uk_coins_amounts = []
             def floor_calc(x, y):
                 return int((x / y) // 1)
-            def result_print(used_denomination, uk_coins_amounts, amount):
-
-   
-                print("Your pennies can be exchanged for ", end = "")
-                for i in range(0, len(uk_coins)):
-                    if uk_coins_amounts[i] > 1:
-                        print(f"{uk_coins_amounts[i]} {variables.uk_coins[i]} coins, ", end = "")
-                    elif uk_coins_amounts[i] == 1:
-                        print(f"{uk_coins_amounts[i]} {variables.uk_coins[i]} coin, ", end = "")
-                if uk_coins_amounts[-1] == 0:
-                    print("and you'll have no pennies left over!")
-                else:
-                    if uk_coins_amounts[-1] != 1:
-                        print(f"and you'll have {uk_coins_amounts[-1]} pennies left over!")
-                    else:
-                        print(f"and you'll have {uk_coins_amounts[-1]} penny left over!")
-    
-            uk_coins_amounts = []
             for i in range(0, len(variables.uk_coins)):
                 if variables.uk_coins[i] != variables.excluded_denomination:
                     uk_coins_amounts.append(floor_calc(variables.multi_inputted_amount, variables.uk_coins_dict[variables.uk_coins[i]]))
                     variables.multi_inputted_amount -= uk_coins_amounts[i] * variables.uk_coins_dict[variables.uk_coins[i]]
+                    def result_print(used_denomination, uk_coins_amounts, amount):
+                
+   
+                        print("Your pennies can be exchanged for ", end = "")
+                        for i in range(0, len(variables.uk_coins)):
+                            if uk_coins_amounts[i] > 1:
+                                print(f"{uk_coins_amounts[i]} {variables.uk_coins[i]} coins, ", end = "")
+                            elif uk_coins_amounts[i] == 1:
+                                print(f"{uk_coins_amounts[i]} {variables.uk_coins[i]} coin, ", end = "")
+                            if uk_coins_amounts[-1] == 0:
+                                print("and you'll have no pennies left over!")
+                            else:
+                                if uk_coins_amounts[-1] != 1:
+                                    print(f"and you'll have {uk_coins_amounts[-1]} pennies left over!")
+                                else:
+                                    print(f"and you'll have {uk_coins_amounts[-1]} penny left over!")
+    
                     self.result_print(variables.uk_coins, variables.coins_value)
                 else:
                     uk_coins_amounts.append(0) 
