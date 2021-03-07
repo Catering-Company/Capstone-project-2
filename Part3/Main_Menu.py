@@ -67,9 +67,10 @@ class MainWindow(QMainWindow):
         l = QVBoxLayout()
 
 # textbox at top of MainWindow
-        self.text_display = QLabel(self)
+        self.text_display = QLabel("Label",self)
         self.text_display.setText("Welcome to the Calculator")
         self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
+        self.text_display.setStyleSheet("color: white; border: 3px solid white; border-radius: 8px; padding: 6px; ")  
         l.addWidget(self.text_display)
 
 
@@ -174,14 +175,8 @@ class MainWindow(QMainWindow):
         self.text_display.setText("We can convert to\n " + coins[0] + ", " + coins[1] + ", "+ coins[2] + ", "
         + coins[3] + " or "+ coins[4])
 
-    # reset top text when 'Clear' pressed
     def clearText(self):
         self.text_display.setText("Welcome to the Calculator")
-
-    # ends application when 'X' is clicked
-    def closeEvent(self,event):
-        app.quit()
-
 
 
 
@@ -201,6 +196,43 @@ class MainWindow(QMainWindow):
 
 # initialise GUI and display
 app = QApplication(sys.argv)
+style = """
+QLabel{
+    color: white;
+    font-size: 15px;
+    font-family: verdana ;
+    font-weight: bold;
+}
+
+QPushButton{
+    color: black;
+    background: #daf4f5 ;
+    border-radius: 8px;
+    padding: 6px;
+    }
+
+QMainWindow {
+    background: #023638;
+}
+
+CalcWindow {
+    background: #023638;
+
+}
+
+ConfigWindow { 
+    background: #023638;
+}
+
+QLineEdit {
+    border-radius: 8px;
+    padding: 4px;
+}
+
+"""
+app.setStyleSheet(style)
+
+
 w = MainWindow()
 w.show()
 app.exec_()

@@ -24,8 +24,8 @@ class CalcWindow(QWidget):
 
         self.text_display = QLabel(self)
         self.text_display.setText("Single Coin Calculator")
-        self.setGeometry (1000, 300, 300, 700)
         self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
+        self.text_display.setStyleSheet("border: 3px solid white; border-radius: 8px; padding: 6px; ")  
         layout.addWidget(self.text_display)
 
 # -----------------------------------------------
