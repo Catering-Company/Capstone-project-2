@@ -1,4 +1,4 @@
-# CODE FOR COIN CALCULATOR, PROVIDED THAT THE CURRENCY IS SET TO POUNDS
+# CODE FOR COIN CALCULATOR, PROVIDED THAT THE CURRENCY IS SET TO POUNDS.
 # --------------------------------------------------
 
 # General_functions contains functions that are used throughout multiple parts of the program.
