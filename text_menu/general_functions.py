@@ -3,6 +3,7 @@
 
 # Global variables:
 # A useful list and dictionary for both US and UK currency.
+
 uk_coins = ["£2", "£1", "50p", "20p", "10p"]
 uk_coins_dict = {
         "£2": 200,
@@ -31,6 +32,7 @@ us_coins_dict = {
 # between 100 and 500.
 # config also determines whether 'Coin Calculator' and 'Multiple Coin Calculator' run in pounds or
 # dollars, based on what config["currency"] is set to.  
+
 CONFIG = {
     "currency": "POUNDS STERLING",
     "min_coin_value": 0,
@@ -39,13 +41,13 @@ CONFIG = {
 #---------------------------------------------------
 
 # Functions: 
-#
-#
+
 # Allows the user to choose what option they want from a menu. The parameter 'choices' is an
 # integer that needs to equal the length of the menu. In 'main_menu.py' choices takes the value 
 # of 6, whereas in 'set_details.py' choices takes the value of 4. If the user enters anything
 # that isn't an integer from 1 through to choices then option_chooser returns a negative value
 # so that the user can be re-prompted via a while-loop.
+
 def option_chooser(choices):
     choice = input("Enter your choice: ")
     try:
@@ -62,21 +64,24 @@ def option_chooser(choices):
 
 
 # Creates a 'fresh' terminal window
+
 def spacer():
         for i in range(0,100):
             print()
 
 
-#Calculates the floor of x when divided by y
+# Calculates the floor of x when divided by y.
+
 def floor_calc(x, y):
     return int((x / y) // 1)
 # --------------------------------------------------
 
-# Gets the user to input the amount of pennies that they want to exchange. Ensures the user
-# inputs a positive integer. get_penny_amount takes the parameter config. This parameter
-# is a list that has a 'min_coin_value' and a 'max_coin_value' as keys. get_penny_amount
-# will ensure that the amount of pennies the user chooses is between these values of 
+# Gets the user to input the amount of pennies that they want to exchange.
+# Ensures the user inputs a positive integer, get_penny_amount takes the parameter config.
+# This parameter is a list that has a 'min_coin_value' and a 'max_coin_value' as keys.
+# get_penny_amount will ensure that the amount of pennies the user chooses is between the values of 
 # 'min_coin_value' and 'max_coin_value'.
+
 def get_penny_amount(config):
     try:
         pennies = input("How many pennies do you have? Please enter a positive number: ")
@@ -99,7 +104,8 @@ def get_penny_amount(config):
     return int(pennies)
 # --------------------------------------------------
 
-# Same as get_penny_amount but with cents. 
+# Same as get_penny_amount but with cents.
+
 def get_cent_amount(config):
     try:
         cents = input("How many cents do you have? Please enter a postiive number: ")
@@ -120,5 +126,4 @@ def get_cent_amount(config):
         print("This is not a valid amount of cents.")
         return -5
     return int(cents)
-
 #---------------------------------------------------------
