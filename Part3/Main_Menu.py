@@ -1,10 +1,7 @@
 import sys
 import coinCalculator
-<<<<<<< HEAD
 import multi_coin_calculator
-=======
 import configMenu
->>>>>>> f505feb85d81f2909cf503923bbf87c7fe49da62
 import variables
 
 from PyQt5.QtWidgets import (
@@ -89,8 +86,16 @@ class MainWindow(QMainWindow):
             self.window1.hide()
 
         else:
+            # when single calculator is opened
+            # text box needs to say 'cents'
+            # dropdown needs to be in correct currency
+            # all windows are made when main menu is run, so these need to be changed when sub-window is opened
             self.window1.show()
             self.window1.coin_input_box.setPlaceholderText(f"Enter an amount (in {variables.currency_config['currency_word']})")
+            for i in range(len(variables.coins)):
+                value = int(variables.coins_value[i])
+                index = self.window1.denom_dropdown.findData(value)
+                self.window1.denom_dropdown.setItemText(index, variables.coins[i])
 
 
     def toggle_window2(self, checked):
