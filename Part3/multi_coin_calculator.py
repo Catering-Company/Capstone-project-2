@@ -139,7 +139,8 @@ class CalcWindow(QWidget):
 #Calculates the floor of x when divided by y
     
 
-    def result_print(uk_coins, uk_coins_amounts):
+    def result_print(uk_coins, uk_coins_amounts, amount):
+        
         print("Your pennies can be exchanged for ", end = "")
         for i in range(0, len(uk_coins)):
             if uk_coins_amounts[i] > 1:
@@ -171,7 +172,7 @@ class CalcWindow(QWidget):
             # 'calculator'
             def floor_calc(x, y):
                 return int((x / y) // 1)
-            def result_print(self, used_denomination, uk_coins_amounts, amount):
+            def result_print(used_denomination, uk_coins_amounts, amount):
 
    
                 print("Your pennies can be exchanged for ", end = "")
@@ -190,7 +191,7 @@ class CalcWindow(QWidget):
     
             uk_coins_amounts = []
             for i in range(0, len(variables.uk_coins)):
-                if variables.uk_coins[i] != variables.m_denomination:
+                if variables.uk_coins[i] != variables.excluded_denomination:
                     uk_coins_amounts.append(floor_calc(variables.multi_inputted_amount, variables.uk_coins_dict[variables.uk_coins[i]]))
                     variables.multi_inputted_amount -= uk_coins_amounts[i] * variables.uk_coins_dict[variables.uk_coins[i]]
                     self.result_print(variables.uk_coins, variables.coins_value)
