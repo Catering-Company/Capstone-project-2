@@ -129,6 +129,12 @@ class MainWindow(QMainWindow):
 
         else:
             self.window2.show()
+            self.window2.coin_input_box.setPlaceholderText(f"Enter an amount (in {variables.currency_config['currency_word']})")
+            for i in range(len(variables.coins)):
+                value = int(variables.coins_value[i])
+                index = self.window2.denom_dropdown.findData(value)
+                self.window2.denom_dropdown.setItemText(index, variables.coins[i])
+
 
     def toggle_window3(self, checked):
         if self.window3.isVisible():
