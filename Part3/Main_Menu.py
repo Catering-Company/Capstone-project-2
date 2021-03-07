@@ -11,6 +11,7 @@ from PyQt5.QtWidgets import (
     QPushButton,
     QVBoxLayout,
     QWidget,
+    QDesktopWidget
 )
 from PyQt5 import QtCore
 
@@ -31,6 +32,29 @@ class AnotherWindow(QWidget):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.init_ui()
+
+# dimensions, position and window title
+    def init_ui(self):
+        self.resize(200, 250)
+        self.center()
+        self.setWindowTitle('Coin Counter 3000')
+        self.show()
+
+    def center(self):
+        # geometry of the main window
+        qr = self.frameGeometry()
+
+        # center point of screen
+        cp = QDesktopWidget().availableGeometry().center()
+
+        # move calc menus's center point to screen's center point
+        qr.moveCenter(cp)
+
+        # top left of calc menu becomes top left of window centering it
+        self.move(qr.topLeft())
+
+      
         # put the sub-window here FILE_NAME.CLASS_NAME()
         self.window1 = coinCalculator.CalcWindow()
         self.window2 = multi_coin_calculator.CalcWindow()
@@ -47,6 +71,7 @@ class MainWindow(QMainWindow):
         self.text_display.setText("Welcome to the Calculator")
         self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         l.addWidget(self.text_display)
+
 
 # buttons on MainWindow
         button1 = QPushButton("Single Coin Calculator")
