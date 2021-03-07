@@ -99,12 +99,18 @@ class CalcWindow(QWidget):
 # set the denomination excluded using the dropdown menu
     def deselect_coin(self,index):
         variables.excluded_denomination = int(self.denom_dropdown.itemData(index))
-        variables.used_denomination = variables.multi_denomination.remove(int(self.denom_dropdown.itemData(index)))
+        #variables.used_denomination = variables.multi_denomination.remove(int(self.denom_dropdown.itemData(index)))
+        variables.missing_denom = variables.multi_denomination
+        for j in range(len(variables.missing_denom)):
+            if variables.missing_denom[j] == variables.excluded_denomination:
+                variables.missing_denom[j] = 0
+
 
         #---TESTING---
-        print(variables.multi_denomination)
+        print('Variables.multi_denomination: ' + str(variables.multi_denomination))
         print(type(variables.multi_denomination))
-        print(self.denom_dropdown.itemData(index))
+        print('Selected to exclude: ' + str(self.denom_dropdown.itemData(index)))
+        print('variables.missing_denom: ' + str(variables.missing_denom))
 
 # button function to display if the inputted amount is valid
 # calls check_input_value
@@ -142,15 +148,37 @@ class CalcWindow(QWidget):
         # accesses the inputs (which should already have been validated)
         amount = variables.multi_inputted_amount
         denom = variables.excluded_denomination
+        print(denom)
         # gets the string value of the excluded denomination (200 = '£2')
-        index = variables.coins_value.index(denom)
-        denom_str = variables.coins[index]
+        #index = variables.coins_value.index(denom)
+        #denom_str = variables.coins[index]
+
+        denom_list = variables.coins_value
+        number_of_each = variables.how_many_of_each
+        #denom_list[index] = 0
+        i = 0
 
         # multi_inputted_amount is initialised as -2; checks if user has entered input
         if variables.multi_inputted_amount == -2:
             self.calculate_text.setText("You haven't inputted an amount")
         else:
             # 'calculator'
+            self.calculate_text.setText("Lol")
+            print("i = " + str(i))
+            while amount >= 10 and i<=4:
+                if variables.missing_denom[i] == 0:
+                    i+=1
+                elif (variables.missing_denom[i] > amount):
+                    i+=1
+                else:
+                    number_of_each[i] += 1
+                    amount = amount - variables.missing_denom[i]
+        remainder = amount
+        print(number_of_each)
+        print(remainder)
+        variables.multi_denomination = [200,100,50,20,10]
+        variables.how_many_of_each = [0,0,0,0,0]
+'''
             def floor_calc(x, y):
                 return int((x / y) // 1)
             def result_print(used_denomination, uk_coins_amounts, amount):
@@ -179,6 +207,8 @@ class CalcWindow(QWidget):
                 else:
                     uk_coins_amounts.append(0) 
                     uk_coins_amounts.append(variables.multi_inputted_amount)
+            
+'''
 
 
 
