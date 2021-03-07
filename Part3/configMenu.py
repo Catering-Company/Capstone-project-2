@@ -140,13 +140,41 @@ class ConfigWindow(QWidget):
 
 # FUNCTIONS ----------------------------------
     def pounds_button_clicked(self):
-        variables.currency = "GBP"
-        self.currency_value_label.setText("Currency: " + variables.currency)
+        #variables.currency = "GBP"
+        variables.previous_major_symbol = variables.currency_config["currency_major"]
+        variables.previous_minor_symbol = variables.currency_config["currency_minor"]
+
+        variables.currency_config["currency"] = "GBP"
+        variables.currency_config["currency_major"] = "£"
+        variables.currency_config["currency_minor"] = "p"
+        variables.currency_config["currency_word"] = "pence"
+
+        variables.coins = [f'{variables.currency_config["currency_major"]}2',
+        f'{variables.currency_config["currency_major"]}1',
+        f'50{variables.currency_config["currency_minor"]}',
+        f'20{variables.currency_config["currency_minor"]}',
+        f'10{variables.currency_config["currency_minor"]}']
+
+        self.currency_value_label.setText("Currency: " + variables.currency_config["currency"])
 
 
     def dollars_button_clicked(self):
         #variables.currency = "USD"
-        self.currency_value_label.setText("Sorry, USD isn't supported \nyet")
+        variables.previous_major_symbol = variables.currency_config["currency_major"]
+        variables.previous_minor_symbol = variables.currency_config["currency_minor"]
+        variables.currency_config["currency"] = "USD"
+        variables.currency_config["currency_major"] = "$"
+        variables.currency_config["currency_minor"] = "c"
+        variables.currency_config["currency_word"] = "cents"
+
+        variables.coins = [f'{variables.currency_config["currency_major"]}2',
+        f'{variables.currency_config["currency_major"]}1',
+        f'50{variables.currency_config["currency_minor"]}',
+        f'20{variables.currency_config["currency_minor"]}',
+        f'10{variables.currency_config["currency_minor"]}']
+
+        self.currency_value_label.setText("Currency: " + variables.currency_config["currency"])
+
 
 
     def min_value_button_clicked(self):

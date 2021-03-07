@@ -1,5 +1,6 @@
 import sys
 import coinCalculator
+import multi_coin_calculator
 import configMenu
 import variables
 
@@ -32,7 +33,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         # put the sub-window here FILE_NAME.CLASS_NAME()
         self.window1 = coinCalculator.CalcWindow()
-        self.window2 = AnotherWindow()
+        self.window2 = multi_coin_calculator.CalcWindow()
         self.window3 = AnotherWindow()
         self.window4 = AnotherWindow()
         self.window5 = configMenu.ConfigWindow()
@@ -85,7 +86,17 @@ class MainWindow(QMainWindow):
             self.window1.hide()
 
         else:
+            # when single calculator is opened
+            # text box needs to say 'cents'
+            # dropdown needs to be in correct currency
+            # all windows are made when main menu is run, so these need to be changed when sub-window is opened
             self.window1.show()
+            self.window1.coin_input_box.setPlaceholderText(f"Enter an amount (in {variables.currency_config['currency_word']})")
+            for i in range(len(variables.coins)):
+                value = int(variables.coins_value[i])
+                index = self.window1.denom_dropdown.findData(value)
+                self.window1.denom_dropdown.setItemText(index, variables.coins[i])
+
 
     def toggle_window2(self, checked):
         if self.window2.isVisible():
@@ -116,14 +127,18 @@ class MainWindow(QMainWindow):
             self.window5.show()
 
     def click_see_config(self):    
-        currency = variables.currency
+        curr = variables.currency_config["currency"]
+        curr_word = variables.currency_config["currency_word"]
+
+        #currency = variables.currency
         min_input = variables.min_input
         max_input = variables.max_input    
-        self.text_display.setText("Currency: " + currency + "\nMinimum Input (pence): " +
-        str(min_input) + "\nMaximum Input (pence): " + str(max_input))
+        self.text_display.setText("Currency: " + curr + f"\nMinimum Input ({curr_word}): " +
+        str(min_input) + f"\nMaximum Input ({curr_word}): " + str(max_input))
 
     def click_see_coins(self):
         coins = variables.coins
+        print(coins)
 
         self.text_display.setText("We can convert to\n " + coins[0] + ", " + coins[1] + ", "+ coins[2] + ", "
         + coins[3] + " or "+ coins[4])
