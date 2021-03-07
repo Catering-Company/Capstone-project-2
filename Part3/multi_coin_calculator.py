@@ -99,7 +99,7 @@ class CalcWindow(QWidget):
 # set the denomination excluded using the dropdown menu
     def deselect_coin(self,index):
         variables.excluded_denomination = int(self.denom_dropdown.itemData(index))
-        used_denomination = variables.multi_denomination.remove(int(self.denom_dropdown.itemData(index)))
+        variables.used_denomination = variables.multi_denomination.remove(int(self.denom_dropdown.itemData(index)))
 
         #---TESTING---
         print(variables.multi_denomination)
@@ -135,25 +135,6 @@ class CalcWindow(QWidget):
         #print(variables.single_inputted_amount)
         return int(textboxValue)
 
-
-#Calculates the floor of x when divided by y
-    
-
-    def result_print(uk_coins, uk_coins_amounts, amount):
-        
-        print("Your pennies can be exchanged for ", end = "")
-        for i in range(0, len(uk_coins)):
-            if uk_coins_amounts[i] > 1:
-                print(f"{uk_coins_amounts[i]} {uk_coins[i]} coins, ", end = "")
-            elif uk_coins_amounts[i] == 1:
-                print(f"{uk_coins_amounts[i]} {uk_coins[i]} coin, ", end = "")
-        if uk_coins_amounts[-1] == 0:
-            print("and you'll have no pennies left over!")
-        else:
-            if uk_coins_amounts[-1] != 1:
-                print(f"and you'll have {uk_coins_amounts[-1]} pennies left over!")
-            else:
-                print(f"and you'll have {uk_coins_amounts[-1]} penny left over!")
 
 # calculate button function
 # displays the result
