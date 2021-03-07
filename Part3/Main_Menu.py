@@ -175,8 +175,14 @@ class MainWindow(QMainWindow):
         self.text_display.setText("We can convert to\n " + coins[0] + ", " + coins[1] + ", "+ coins[2] + ", "
         + coins[3] + " or "+ coins[4])
 
+    # reset top text when 'Clear' pressed
     def clearText(self):
         self.text_display.setText("Welcome to the Calculator")
+
+    # ends application when 'X' is clicked
+    def closeEvent(self,event):
+        app.quit()
+
 
 
 

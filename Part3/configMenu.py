@@ -30,7 +30,7 @@ class ConfigWindow(QWidget):
 
 # sub menu title at top of window
         self.text_display = QLabel(self)
-        self.text_display.setText("Sub-Menu")
+        self.text_display.setText("Calculator Configuration Menu")
         self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         l.addWidget(self.text_display)
 
@@ -59,7 +59,7 @@ class ConfigWindow(QWidget):
         
 
         #self.currency_value_label = QLabel("Currency: " + variables.currency)
-        self.currency_value_label = QLabel(f"{variables.currency_config['currency']}")
+        self.currency_value_label = QLabel(f"Currency: {variables.currency_config['currency']}")
         self.currency_value_label.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter)
         l.addWidget(self.currency_value_label)
 
