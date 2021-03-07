@@ -61,14 +61,14 @@ def option_chooser(choices):
     print()    
     print("Invalid choice. Please try again.")
     return -2
-
+# --------------------------------------------------
 
 # Creates a 'fresh' terminal window
 
 def spacer():
         for i in range(0,100):
             print()
-
+# --------------------------------------------------
 
 # Calculates the floor of x when divided by y.
 

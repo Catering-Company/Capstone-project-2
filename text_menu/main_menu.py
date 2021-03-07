@@ -15,6 +15,7 @@ import set_details
 # The amount of options in the main menu.
 
 MENU_OPTIONS = 6
+# --------------------------------------------------
 
 # Function to print the main menu.
 
@@ -40,7 +41,6 @@ def menu():
 
 def main():
     # See general_functions.py for an explanation of config.
-    
     config = CONFIG
     spacer()
     menu()
