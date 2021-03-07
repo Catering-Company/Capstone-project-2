@@ -104,7 +104,11 @@ def get_penny_amount(config):
     return int(pennies)
 # --------------------------------------------------
 
-# Same as get_penny_amount but with cents.
+# Gets the user to input the amount of cents that they want to exchange.
+# Ensures the user inputs a positive integer, get_cent_amount takes the parameter config.
+# This parameter is a list that has a 'min_coin_value' and a 'max_coin_value' as keys.
+# get_cent_amount will ensure that the amount of cents the user chooses is between the values of 
+# 'min_coin_value' and 'max_coin_value'.
 
 def get_cent_amount(config):
     try:
