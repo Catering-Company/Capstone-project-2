@@ -104,23 +104,29 @@ class MainWindow(QMainWindow):
 
         else:
             self.window2.show()
+            self.window2.coin_input_box.setPlaceholderText(f"Enter an amount (in {variables.currency_config['currency_word']})")
+            for i in range(len(variables.coins)):
+                value = int(variables.coins_value[i])
+                index = self.window2.denom_dropdown.findData(value)
+                self.window2.denom_dropdown.setItemText(index, variables.coins[i])
+
 
     def toggle_window3(self, checked):
-        if self.window1.isVisible():
+        if self.window3.isVisible():
             self.window3.hide()
 
         else:
             self.window3.show()
 
     def toggle_window4(self, checked):
-        if self.window1.isVisible():
+        if self.window4.isVisible():
             self.window4.hide()
 
         else:
             self.window4.show()
 
     def toggle_window5(self, checked):
-        if self.window1.isVisible():
+        if self.window5.isVisible():
             self.window5.hide()
 
         else:

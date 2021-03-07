@@ -58,7 +58,8 @@ class ConfigWindow(QWidget):
         l.addWidget(self.dollars_button)
         
 
-        self.currency_value_label = QLabel("Currency: " + variables.currency)
+        #self.currency_value_label = QLabel("Currency: " + variables.currency)
+        self.currency_value_label = QLabel(f"{variables.currency_config['currency']}")
         self.currency_value_label.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter)
         l.addWidget(self.currency_value_label)
 
@@ -141,8 +142,6 @@ class ConfigWindow(QWidget):
 # FUNCTIONS ----------------------------------
     def pounds_button_clicked(self):
         #variables.currency = "GBP"
-        variables.previous_major_symbol = variables.currency_config["currency_major"]
-        variables.previous_minor_symbol = variables.currency_config["currency_minor"]
 
         variables.currency_config["currency"] = "GBP"
         variables.currency_config["currency_major"] = "£"
@@ -160,8 +159,6 @@ class ConfigWindow(QWidget):
 
     def dollars_button_clicked(self):
         #variables.currency = "USD"
-        variables.previous_major_symbol = variables.currency_config["currency_major"]
-        variables.previous_minor_symbol = variables.currency_config["currency_minor"]
         variables.currency_config["currency"] = "USD"
         variables.currency_config["currency_major"] = "$"
         variables.currency_config["currency_minor"] = "c"

@@ -1,36 +1,59 @@
-# variables for whole application
+
+# ----- VARIABLES FOR WHOLE APPLICATION -----
+
+# dictionary for  the currency that user is currently working in
+# used mainly for output text
 currency_config = {
     'currency' : 'GBP',
     'currency_major' : '£',
     'currency_minor' : 'p',
     'currency_word' : 'pence',
-
 }
-currency = 'GBP'
-curr_symbol = '£'
+
+# minimum and maximum input
 min_input = 0
 max_input = 10000
+
+# list of available coins as strings
+# set to GBP or USD in configMenu
 coins = ["£2", "£1","50p","20p","10p"]
 
-'''
-coins = [f'{currency_config["currency_major"]}2',
-        f'{currency_config["currency_major"]}1',
-        f'50{currency_config["currency_minor"]}',
-        f'20{currency_config["currency_minor"]}',
-        f'10{currency_config["currency_minor"]}']
-'''
-
+# list of coin values in smallest denomination (so use 20p and 20c)
+# THIS STAYS CONSTANT
 coins_value = [200,100,50,20,10]
 
-# variables for single coin calculator
+# initialised to -1 to check if a value has been inputted
+# negative numbers cannot be inputted by user; so safe to use -1
 single_inputted_amount = -1
+
+# as dropdown box is in £2/$2 selection by default
 single_denomination = 200
 
-# variables for multiple coin calculator
+
+
+# ----- VARIABLES FOR MULTIPLE COIN CALCULATOR -----
+
+# initialised to -2 to check if a value has been inputted
 multi_inputted_amount = -2
+
+# list of all available coins; only for the multi coin calculator
 multi_denomination = [200,100,50,20,10]
-used_denomination = []
+
+# list of all coins with the excluded coin set to 0
+# by default dropdown menu set at 200, so initialised to remove 200
+missing_denom = [0,100,50,20,10]
+
+# stores the amount of the excluded coin (can be 200, 100, 50, 20, 10)
 excluded_denomination = 200
+
+# list to store how many of each coin the user can get
+# one should always be 0; the excluded one
+# index place related to multi_denomination/ coins_value e.g. [200,100,50,20,10]
+how_many_of_each = [0,0,0,0,0]
+
+
+
+# ----- CURRENTLY UNUSED -----
 
 # A useful list and dictionary for UK currency
 uk_coins = ["£2", "£1", "50p", "20p", "10p"]
@@ -41,3 +64,8 @@ uk_coins_dict = {
         "20p": 20,
         "10p": 10,
     }
+
+# IGNORE
+# used before currency_config dictionary
+#currency = 'GBP'
+#curr_symbol = '£'
