@@ -11,7 +11,6 @@ from PyQt5.QtWidgets import (
 from PyQt5 import QtCore
 import variables
 
-# POSSIBLE ISSUES
 
 class CalcWindow(QWidget):
     def __init__(self):
@@ -24,8 +23,8 @@ class CalcWindow(QWidget):
 
         self.text_display = QLabel(self)
         self.text_display.setText("Single Coin Calculator")
-        self.setGeometry (1000, 300, 300, 700)
         self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
+        self.text_display.setStyleSheet("border: 3px solid white; border-radius: 8px; padding: 6px; ")  
         layout.addWidget(self.text_display)
 
 # -----------------------------------------------
@@ -47,8 +46,7 @@ class CalcWindow(QWidget):
 # input text box
         self.coin_input_box = QLineEdit(self)
         print(variables.currency_config['currency_word'])
-        #self.coin_input_box.setPlaceholderText(f"Enter an amount (in {variables.currency_config['currency_word']})")
-
+        
         layout.addWidget(self.coin_input_box)
 
 # button
@@ -172,14 +170,15 @@ class CalcWindow(QWidget):
         index = variables.coins_value.index(denom)
         denom_str = variables.coins[index]
 
-        # single_inputted_amount is initialised as -1; checks if user has enetered input
+        # single_inputted_amount is initialised as -1; checks if user has entered input
         if variables.single_inputted_amount == -1:
             self.calculate_text.setText("You haven't inputted an amount")
         else:
             # 'calculator'
             number_of_denom = amount//denom
             remainder = amount%denom
-            self.calculate_text.setText(str(number_of_denom) + " " + denom_str + " ('s) and a remainder of " + str(remainder)
+            self.calculate_text.setText(str(number_of_denom) + " " + denom_str 
+            + " ('s) and a remainder of " + str(remainder)
             + " " + variables.currency_config['currency_word'])
 
 # when window closes; resets the calculator

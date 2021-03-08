@@ -27,6 +27,7 @@ class CalcWindow(QWidget):
         self.text_display = QLabel(self)
         self.text_display.setText("Multiple Coin Calculator")
         self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
+        self.text_display.setStyleSheet("border: 3px solid white; border-radius: 8px; padding: 6px; ")
         layout.addWidget(self.text_display)
 
 # spacing
@@ -180,7 +181,8 @@ class CalcWindow(QWidget):
                     amount = amount - variables.missing_denom[i]
             remainder = amount
 
-            self.calculate_text.setText("That can be converted to\n" +
+            self.calculate_text.setText(f"{variables.multi_inputted_amount} " +
+                    variables.currency_config['currency_word'] + " can be converted to\n" +
                     str(number_of_each[0]) + f" {variables.currency_config['currency_major']}2 ('s)\n" +
                     str(number_of_each[1]) + f" {variables.currency_config['currency_major']}1 ('s)\n" +
                     str(number_of_each[2]) + f"  50{variables.currency_config['currency_minor']} ('s)\n" +

@@ -24,6 +24,7 @@ class MainWindow(QMainWindow):
         self.text_display = QLabel(self)
         self.text_display.setText("Sub-Menu")
         self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
+        self.text_display.setStyleSheet("color: white; border: 3px solid white; border-radius: 8px; padding: 6px; ")  
         l.addWidget(self.text_display)
 
 # spacing

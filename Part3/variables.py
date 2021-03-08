@@ -51,21 +51,3 @@ excluded_denomination = 200
 # index place related to multi_denomination/ coins_value e.g. [200,100,50,20,10]
 how_many_of_each = [0,0,0,0,0]
 
-
-
-# ----- CURRENTLY UNUSED -----
-
-# A useful list and dictionary for UK currency
-uk_coins = ["£2", "£1", "50p", "20p", "10p"]
-uk_coins_dict = {
-        "£2": 200,
-        "£1": 100,
-        "50p": 50,
-        "20p": 20,
-        "10p": 10,
-    }
-
-# IGNORE
-# used before currency_config dictionary
-#currency = 'GBP'
-#curr_symbol = '£'
