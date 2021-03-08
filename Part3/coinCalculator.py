@@ -45,7 +45,7 @@ class CalcWindow(QWidget):
 
 # input text box
         self.coin_input_box = QLineEdit(self)
-        print(variables.currency_config['currency_word'])
+        #print(variables.currency_config['currency_word'])
         
         layout.addWidget(self.coin_input_box)
 
