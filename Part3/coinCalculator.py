@@ -150,10 +150,13 @@ class CalcWindow(QWidget):
         try:
             textboxValue = int(textboxValue)
             if int(textboxValue) < variables.min_input:
+                    variables.single_inputted_amount = -1
                     return -1
             if int(textboxValue) > variables.max_input:
+                    variables.single_inputted_amount = -1
                     return -2
         except:
+            variables.single_inputted_amount = -1
             return -3
     
         variables.single_inputted_amount = int(textboxValue)
@@ -172,7 +175,7 @@ class CalcWindow(QWidget):
 
         # single_inputted_amount is initialised as -1; checks if user has entered input
         if variables.single_inputted_amount == -1:
-            self.calculate_text.setText("You haven't inputted an amount")
+            self.calculate_text.setText("You haven't inputted a valid amount")
         else:
             # 'calculator'
             number_of_denom = amount//denom

@@ -120,6 +120,7 @@ class CalcWindow(QWidget):
     def coin_input_button_clicked(self):
         textboxValue = self.coin_input_box.text()
         testing_value = self.check_input_value(textboxValue)
+        self.calculate_text.setText("") # removes calculated text if user starts putting in new input
         if testing_value >= 0:
             self.result_input_text.setText(f"You inputted {textboxValue} " + variables.currency_config['currency_word'])
         if testing_value == -1:
@@ -135,8 +136,10 @@ class CalcWindow(QWidget):
         try:
             textboxValue = int(textboxValue)
             if int(textboxValue) < variables.min_input:
+                    variables.multi_inputted_amount = -2
                     return -1
             if int(textboxValue) > variables.max_input:
+                    variables.multi_inputted_amount = -2
                     return -2
         except:
             variables.multi_inputted_amount = -2
@@ -167,7 +170,7 @@ class CalcWindow(QWidget):
 
         # multi_inputted_amount is initialised as -2; checks if user has entered input
         if variables.multi_inputted_amount == -2:
-            self.calculate_text.setText("You haven't inputted an amount")
+            self.calculate_text.setText("You haven't inputted a valid amount")
         else:
             # 'calculator'
             print("i = " + str(i))

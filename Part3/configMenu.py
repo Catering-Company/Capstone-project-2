@@ -60,7 +60,8 @@ class ConfigWindow(QWidget):
         
 
         #self.currency_value_label = QLabel("Currency: " + variables.currency)
-        self.currency_value_label = QLabel(f"Currency: {variables.currency_config['currency']}")
+        #self.currency_value_label = QLabel(f"Currency: {variables.currency_config['currency']}")
+        self.currency_value_label = QLabel("")
         self.currency_value_label.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter)
         l.addWidget(self.currency_value_label)
 
