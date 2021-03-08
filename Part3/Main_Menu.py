@@ -71,8 +71,7 @@ class MainWindow(QMainWindow):
         self.text_display.setText("Welcome to the Calculator")
         self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) 
         # set text to centre of screen
-        self.text_display.setStyleSheet
-        ("color: white; border: 3px solid white; border-radius: 8px; padding: 6px; ")  
+        self.text_display.setStyleSheet("color: white; border: 3px solid white; border-radius: 8px; padding: 6px; ")  
         l.addWidget(self.text_display)
 
 
@@ -200,6 +199,9 @@ class MainWindow(QMainWindow):
 
 # initialise GUI and display
 app = QApplication(sys.argv)
+
+#CSS style sheet 
+
 style = """
 QLabel{
     color: white;
