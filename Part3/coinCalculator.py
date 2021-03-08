@@ -11,7 +11,6 @@ from PyQt5.QtWidgets import (
 from PyQt5 import QtCore
 import variables
 
-# POSSIBLE ISSUES
 
 class CalcWindow(QWidget):
     def __init__(self):
@@ -47,8 +46,7 @@ class CalcWindow(QWidget):
 # input text box
         self.coin_input_box = QLineEdit(self)
         print(variables.currency_config['currency_word'])
-        #self.coin_input_box.setPlaceholderText(f"Enter an amount (in {variables.currency_config['currency_word']})")
-
+        
         layout.addWidget(self.coin_input_box)
 
 # button
@@ -172,14 +170,15 @@ class CalcWindow(QWidget):
         index = variables.coins_value.index(denom)
         denom_str = variables.coins[index]
 
-        # single_inputted_amount is initialised as -1; checks if user has enetered input
+        # single_inputted_amount is initialised as -1; checks if user has entered input
         if variables.single_inputted_amount == -1:
             self.calculate_text.setText("You haven't inputted an amount")
         else:
             # 'calculator'
             number_of_denom = amount//denom
             remainder = amount%denom
-            self.calculate_text.setText(str(number_of_denom) + " " + denom_str + " ('s) and a remainder of " + str(remainder)
+            self.calculate_text.setText(str(number_of_denom) + " " + denom_str 
+            + " ('s) and a remainder of " + str(remainder)
             + " " + variables.currency_config['currency_word'])
 
 # when window closes; resets the calculator
