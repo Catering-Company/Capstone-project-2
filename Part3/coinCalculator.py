@@ -1,3 +1,5 @@
+# SINGLE COIN CALCULATOR
+
 from PyQt5.QtWidgets import (
     QApplication,
     QLabel,
@@ -17,7 +19,7 @@ class CalcWindow(QWidget):
         super().__init__()
         layout = QVBoxLayout()
 
-# title -----------------------------------------
+# TITLE -----------------------------------------
 
 # sub menu title at top of window 
 
@@ -35,7 +37,7 @@ class CalcWindow(QWidget):
         self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         layout.addWidget(self.text_display)
      
-# coin input -----------------------------------
+# COIN INPUT -----------------------------------
 
 # ask how many pennies they want to input
 # text label
@@ -49,7 +51,7 @@ class CalcWindow(QWidget):
         
         layout.addWidget(self.coin_input_box)
 
-# button
+# button to submit choice
         self.coin_input_button = QPushButton("Submit")
         self.coin_input_button.clicked.connect(self.coin_input_button_clicked)
         layout.addWidget(self.coin_input_button)
@@ -68,7 +70,7 @@ class CalcWindow(QWidget):
         layout.addWidget(self.text_display)
 
 
-# Coin denomination choice ----------------------
+# COIN DENOMINATION CHOICE ----------------------
 
 # dropdown menu for coin denomination choice
         self.denom_title = QLabel("Select the denomination you would like.")
@@ -79,13 +81,11 @@ class CalcWindow(QWidget):
         # first argument displayed
         # second argument used to set denomination
 
-        
         self.denom_dropdown.addItem("£2", 200)
         self.denom_dropdown.addItem("£1", 100)
         self.denom_dropdown.addItem("50p", 50)
         self.denom_dropdown.addItem("20p", 20)
         self.denom_dropdown.addItem("10p", 10)
-    
     
         self.denom_dropdown.activated.connect(self.select_coin)
         layout.addWidget(self.denom_dropdown)
@@ -98,7 +98,7 @@ class CalcWindow(QWidget):
         self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         layout.addWidget(self.text_display)
 
-# Calculate button ------------------------------
+# CALCULATE BUTTON ------------------------------
 # button
         self.calculate_button = QPushButton("Calculate")
         self.calculate_button.clicked.connect(self.calculate_button_clicked)
@@ -108,6 +108,8 @@ class CalcWindow(QWidget):
         self.calculate_text = QLabel(" ")
         self.calculate_text.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         layout.addWidget(self.calculate_text)
+
+# SHOW WINDOW ------------------------------
 
 # display the window
         self.setLayout(layout)
@@ -119,7 +121,7 @@ class CalcWindow(QWidget):
 
 
 
-# ----------------------FUNCTIONS----------------------------   
+# ----------------------FUNCTIONS----------------------------
 
 # set the denomination using the dropdown menu
     def select_coin(self,index):
@@ -133,9 +135,15 @@ class CalcWindow(QWidget):
 # button function to display if the inputted amount is valid
 # calls check_input_value
     def coin_input_button_clicked(self):
+        # accesses the user input, stores as local variable
         textboxValue = self.coin_input_box.text()
+
+        # calls check_input_value function to test what was inputted
         testing_value = self.check_input_value(textboxValue)
-        self.calculate_text.setText("") # removes calculated text if user starts putting in new input
+
+        # removes calculated text if user starts putting in new input
+        self.calculate_text.setText("") 
+
         if testing_value >= 0:
             self.result_input_text.setText(f"You inputted {textboxValue} " + variables.currency_config["currency_word"])
         if testing_value == -1:
@@ -146,16 +154,27 @@ class CalcWindow(QWidget):
             self.result_input_text.setText(f"Request denied. Please\nenter a number.")
  
 # checks if the inputted amount is a number and within the min/ max
+# returns negative numbers if input is invalid
+# coin_input_button_clicked will then print error message
+# otherwise positive, valid input is returned
+
     def check_input_value(self, textboxValue):
         try:
+                # gets user input; stores locally
+                # and tries to cast to int
             textboxValue = int(textboxValue)
+
+            # if input is less than set minimum
             if int(textboxValue) < variables.min_input:
                     variables.single_inputted_amount = -1
                     return -1
+
+                # if input is more than set maximum
             if int(textboxValue) > variables.max_input:
                     variables.single_inputted_amount = -1
                     return -2
         except:
+                # if input can't be converted to integer
             variables.single_inputted_amount = -1
             return -3
     
@@ -169,7 +188,9 @@ class CalcWindow(QWidget):
         # accesses the inputs (which should already have been validated)
         amount = variables.single_inputted_amount
         denom = variables.single_denomination
+
         # gets the string value of the denomination (200 = '£2')
+        # using the constant global variables
         index = variables.coins_value.index(denom)
         denom_str = variables.coins[index]
 
@@ -178,8 +199,14 @@ class CalcWindow(QWidget):
             self.calculate_text.setText("You haven't inputted a valid amount")
         else:
             # 'calculator'
+            # gets floor division result of inputted amount
+            # divided by the chosen denomination
             number_of_denom = amount//denom
+
+            # gets modulus of amount/ division -> remainder
             remainder = amount%denom
+
+            # prints the result
             self.calculate_text.setText(str(number_of_denom) + " " + denom_str 
             + " ('s) and a remainder of " + str(remainder)
             + " " + variables.currency_config['currency_word'])
