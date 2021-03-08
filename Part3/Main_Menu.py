@@ -69,8 +69,10 @@ class MainWindow(QMainWindow):
 # textbox at top of MainWindow
         self.text_display = QLabel("Label",self)
         self.text_display.setText("Welcome to the Calculator")
-        self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
-        self.text_display.setStyleSheet("color: white; border: 3px solid white; border-radius: 8px; padding: 6px; ")  
+        self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) 
+        # set text to centre of screen
+        self.text_display.setStyleSheet
+        ("color: white; border: 3px solid white; border-radius: 8px; padding: 6px; ")  
         l.addWidget(self.text_display)
 
 
@@ -89,8 +91,8 @@ class MainWindow(QMainWindow):
         l.addWidget(button3)
 
         button4 = QPushButton("Display Configurations")
-        button4.clicked.connect(self.click_see_config) # button calls click_see_config function
-        #button4.clicked.connect(self.toggle_window4)
+        button4.clicked.connect(self.click_see_config) # button calls click_see_config 
+        #function button4.clicked.connect(self.toggle_window4)
         l.addWidget(button4)
 
         button5 = QPushButton("Set Configurations")
@@ -100,12 +102,13 @@ class MainWindow(QMainWindow):
         clearButton = QPushButton("Clear")
         clearButton.clicked.connect(self.clearText)
         l.addWidget(clearButton)
-        # builds window by collecting widgets added to l (I think that's how it works - Joe)
+        # builds window by collecting widgets added to l 
         w = QWidget()
         w.setLayout(l)
         self.setCentralWidget(w)
 
-#toggling which windows are displayed - needs work to make sure no 2 windows can be opened simultaneously or not depending on what we want. 
+#toggling which windows are displayed - needs work to make sure no 2 windows 
+# can be opened simultaneously or not depending on what we want. 
 
     def toggle_window1(self, checked):
         if self.window1.isVisible():
@@ -115,7 +118,8 @@ class MainWindow(QMainWindow):
             # when single calculator is opened
             # text box needs to say 'cents'
             # dropdown needs to be in correct currency
-            # all windows are made when main menu is run, so these need to be changed when sub-window is opened
+            # all windows are made when main menu is run, so these need to be changed when 
+            # sub-window is opened
             self.window1.show()
             self.window1.coin_input_box.setPlaceholderText(f"Enter an amount (in {variables.currency_config['currency_word']})")
             for i in range(len(variables.coins)):
@@ -172,8 +176,8 @@ class MainWindow(QMainWindow):
         coins = variables.coins
         print(coins)
 
-        self.text_display.setText("We can convert to\n " + coins[0] + ", " + coins[1] + ", "+ coins[2] + ", "
-        + coins[3] + " or "+ coins[4])
+        self.text_display.setText("We can convert to\n " + coins[0] + ", " 
+        + coins[1] + ", "+ coins[2] + ", "+ coins[3] + " or "+ coins[4])
 
     def clearText(self):
         self.text_display.setText("Welcome to the Calculator")
