@@ -22,13 +22,15 @@ coins = ["£2", "£1","50p","20p","10p"]
 # THIS STAYS CONSTANT
 coins_value = [200,100,50,20,10]
 
+
+# ----- VARIABLES FOR SINGLE COIN CALCULATOR -----
+
 # initialised to -1 to check if a value has been inputted
 # negative numbers cannot be inputted by user; so safe to use -1
 single_inputted_amount = -1
 
 # as dropdown box is in £2/$2 selection by default
 single_denomination = 200
-
 
 
 # ----- VARIABLES FOR MULTIPLE COIN CALCULATOR -----
