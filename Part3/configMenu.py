@@ -1,9 +1,4 @@
-# GUI SUB MENU
-
-# NOTE THAT CURRENTLY THE SUB MENU PRINTS THE CONFIG IN THE CONSOLE EVERY TIME A REQUEST TO CHANGE THE
-# CONFIG IS MADE. THIS SHOULD BE REMOVED WHEN IMPLENTING INTO THE FINAL PROGRAM. TO REMOVE THIS
-# DELETE THE LINE 'print(config)' IN THE FUNCTIONS 'max_value_button_clicked(self)',
-# min_value_button_clicked(self), 'pounds_button_clicked(self)' and 'dollars_button_clicked(self)'.
+# GUI CONFIGURATION SUB MENU
 
 from PyQt5.QtWidgets import (
     QApplication,
@@ -20,20 +15,21 @@ import variables
 import sys
 
 
-# class for main menu
+# class for config menu
 class ConfigWindow(QWidget):
     def __init__(self):
         super().__init__()
         # l is our canvas, have to add components to l using l.addWidget(...)
         l = QVBoxLayout()
 
-
-# sub menu title at top of window
+# sub menu title at top of window plus styling
         self.text_display = QLabel(self)
         self.text_display.setText("Calculator Configuration Menu")
         self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         self.text_display.setStyleSheet("border: 3px solid white; border-radius: 8px; padding: 6px; ")  
         l.addWidget(self.text_display)
+
+#----------------------------------
 
 # spacing
         self.text_display = QLabel(self)
@@ -41,7 +37,7 @@ class ConfigWindow(QWidget):
         self.text_display.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         l.addWidget(self.text_display)
 
-# currency ---------------------------------
+# CHANGE CURRENCY ---------------------------------
 
 # currency title
         self.text_display2 = QLabel("Change Currency")
@@ -58,9 +54,9 @@ class ConfigWindow(QWidget):
         self.dollars_button.clicked.connect(self.dollars_button_clicked)
         l.addWidget(self.dollars_button)
         
-
         #self.currency_value_label = QLabel("Currency: " + variables.currency)
-        self.currency_value_label = QLabel(f"Currency: {variables.currency_config['currency']}")
+        #self.currency_value_label = QLabel(f"Currency: {variables.currency_config['currency']}")
+        self.currency_value_label = QLabel("")
         self.currency_value_label.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter)
         l.addWidget(self.currency_value_label)
 
@@ -73,7 +69,7 @@ class ConfigWindow(QWidget):
         l.addWidget(self.text_display)
 
 
-#  min value--------------------
+# CHANGE MINIMUM VALUE --------------------
         self.min_value_title = QLabel("Minimum Coin Value")
         self.min_value_title.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
         l.addWidget(self.min_value_title)
@@ -100,7 +96,6 @@ class ConfigWindow(QWidget):
 
 # ---------------------------------
 
-
 # spacing
 
         self.min_text = QLabel("-----------------")
@@ -108,8 +103,7 @@ class ConfigWindow(QWidget):
         l.addWidget(self.min_text)
 
 
-
-# max value -----------------------
+# CHANGE MAXIMUM VALUE -----------------------
 
         self.max_value_title = QLabel("Maximum Coin Value")
         self.max_value_title.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter) # set text to centre of screen
@@ -137,10 +131,13 @@ class ConfigWindow(QWidget):
 
 # ------------------------------------
 
+# display all widgets
         self.setLayout(l)
 
 
-# FUNCTIONS ----------------------------------
+# ----------------------FUNCTIONS----------------------------   
+
+# sets global variables when 'Pounds Sterling' button pressed
     def pounds_button_clicked(self):
         #variables.currency = "GBP"
 
@@ -150,34 +147,41 @@ class ConfigWindow(QWidget):
         variables.currency_config["currency_word"] = "pence"
 
         variables.coins = [f'{variables.currency_config["currency_major"]}2',
-        f'{variables.currency_config["currency_major"]}1',
-        f'50{variables.currency_config["currency_minor"]}',
-        f'20{variables.currency_config["currency_minor"]}',
-        f'10{variables.currency_config["currency_minor"]}']
+                        f'{variables.currency_config["currency_major"]}1',
+                        f'50{variables.currency_config["currency_minor"]}',
+                        f'20{variables.currency_config["currency_minor"]}',
+                        f'10{variables.currency_config["currency_minor"]}']
 
+        # prints confirmation of change
         self.currency_value_label.setText("Currency: " + variables.currency_config["currency"])
 
-
+# sets global variables when 'US Dollars' button pressed
     def dollars_button_clicked(self):
         #variables.currency = "USD"
+
         variables.currency_config["currency"] = "USD"
         variables.currency_config["currency_major"] = "$"
         variables.currency_config["currency_minor"] = "c"
         variables.currency_config["currency_word"] = "cents"
 
         variables.coins = [f'{variables.currency_config["currency_major"]}2',
-        f'{variables.currency_config["currency_major"]}1',
-        f'50{variables.currency_config["currency_minor"]}',
-        f'20{variables.currency_config["currency_minor"]}',
-        f'10{variables.currency_config["currency_minor"]}']
+                        f'{variables.currency_config["currency_major"]}1',
+                        f'50{variables.currency_config["currency_minor"]}',
+                        f'20{variables.currency_config["currency_minor"]}',
+                        f'10{variables.currency_config["currency_minor"]}']
 
+        # prints confirmation of change
         self.currency_value_label.setText("Currency: " + variables.currency_config["currency"])
 
-
-
+# functionality when 'Change Minimum Value' button pressed
     def min_value_button_clicked(self):
+        # accesses the user input, stores as local variable
         textboxValue = self.min_value_box.text()
+
+        # calls min_coin_value function to test what was inputted
         testing_value = self.min_coin_value(textboxValue)
+
+        # prints out message depending on return value of min_coin_value
         if testing_value >= 0:
                 variables.min_input = int(textboxValue)
                 self.min_value_label.setText(f"The minimum coin value\nis now {textboxValue}.")
@@ -190,9 +194,38 @@ class ConfigWindow(QWidget):
         if testing_value == -4:
                 self.min_value_label.setText(f"Request denied. Please\nenter a number.")
 
+
+        # Gets the user to input a new minimum amount of coins that the user can enter 
+        # into the Coin Calulator and Mutiple Coin Calculator. There are restrictions
+        # in place to prevent the user from entering:
+        # - Any non-integer.
+        # - A min value less than 0.
+        # - A min value greater than or equal to 10000.
+        # - A min value greater than the current max value.
+        #  If any of the above happens then min_coin_value returns a negative integer and
+        # min_value_button_clicked will print 'Request denied'.
+    def min_coin_value(self, textboxValue):
+        try:
+                textboxValue = int(textboxValue)
+                if int(textboxValue) < 0:
+                        return -1
+                if int(textboxValue) >= 10000:
+                        return -2
+                if int(textboxValue) > int(variables.max_input):
+                        return -3           
+        except:
+                return -4
+        return int(textboxValue)
+
+# functionality when 'Change Maximum Value' button pressed
     def max_value_button_clicked(self):
+        # accesses the user input, stores as local variable
         textboxValue = self.max_value_box.text()
+
+        # calls max_coin_value function to test what was inputted
         testing_value = self.max_coin_value(textboxValue)
+
+        # prints out message depending on return value of max_coin_value
         if testing_value >= 0:
                 variables.max_input = int(textboxValue)
                 self.max_value_label.setText(f"Result: The maximum coin\nvalue is now {textboxValue}.")
@@ -224,29 +257,6 @@ class ConfigWindow(QWidget):
                         return -2
                 if int(textboxValue) < int(variables.min_input):  
                         return -3
-        except:
-                return -4
-        return int(textboxValue)
-
-
-        # Gets the user to input a new minimum amount of coins that the user can enter 
-        # into the Coin Calulator and Mutiple Coin Calculator. There are restrictions
-        # in place to prevent the user from entering:
-        # - Any non-integer.
-        # - A min value less than 0.
-        # - A min value greater than or equal to 10000.
-        # - A min value greater than the current max value.
-        #  If any of the above happens then min_coin_value returns a negative integer and
-        # min_value_button_clicked will print 'Request denied'.
-    def min_coin_value(self, textboxValue):
-        try:
-                textboxValue = int(textboxValue)
-                if int(textboxValue) < 0:
-                        return -1
-                if int(textboxValue) >= 10000:
-                        return -2
-                if int(textboxValue) > int(variables.max_input):
-                        return -3           
         except:
                 return -4
         return int(textboxValue)
