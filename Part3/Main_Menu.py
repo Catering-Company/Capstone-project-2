@@ -190,7 +190,7 @@ class MainWindow(QMainWindow):
     def clearText(self):
         self.text_display.setText("Welcome to the Calculator")
 
-# when main menu closed, all windows
+# when main menu closed, all windows close
     def closeEvent(self,event):
         app.quit()
 
